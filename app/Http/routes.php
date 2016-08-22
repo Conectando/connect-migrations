@@ -12,26 +12,5 @@
 */
 
 Route::get('/', function () {
-
-	$excel = storage_path('app/excel/listado_cct_activos.xlsx');
-
-
-	Excel::load($excel, function($reader) {
-
-        $reader->take(1);
-		
-        // $reader->dd();
-
-        $reader->each(function($sheet) {
-
-			// Loop through all rows
-			$sheet->each(function($row) {
-				return $row;
-			});
-
-		});
-
-	});
-
-    return $excel;
+    return view('welcome');
 });

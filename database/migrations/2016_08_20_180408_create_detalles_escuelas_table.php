@@ -18,7 +18,9 @@ class CreateDetallesEscuelasTable extends Migration
             $table->uuid('escuela_id');
             $table->foreign('escuela_id')->references('id')->on('escuelas');
             $table->string('clave_ct');
-            $table->string('rfc_director')->nullable();
+            $table->uuid('nivel_id');
+            $table->foreign('nivel_id')->references('id')->on('niveles_educativos');
+            $table->string('rfc_director', 13)->nullable();
             $table->foreign('rfc_director')->references('rfc')->on('academicos');
             $table->uuid('programa_id');
             $table->foreign('programa_id')->references('id')->on('programas_educativos');
@@ -30,13 +32,14 @@ class CreateDetallesEscuelasTable extends Migration
                 'NOCTURNO',
                 'VESPERTINO'
             ]);
-            $table->string('zona');
-            $table->string('sotenimiento');
+            $table->string('zona', 30);
+            $table->string('sotenimiento', 30);
+            $table->timestamps();
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migratiozonans.
      *
      * @return void
      */

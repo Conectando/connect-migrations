@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 
 use App\Academico;
 
-class AcademicosSeeder extends Seeder
+class AcademicosTableSeeder extends Seeder
 {
 
     /**

@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\NivelEducativo;
 
-class NivelesEducativosSeeder extends Seeder
+class NivelesEducativosTableSeeder extends Seeder
 {
 
     /**
