@@ -13,10 +13,8 @@ class CreateProgramasEducativosTable extends Migration
     public function up()
     {
         Schema::create('programas_educativos', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->primary('id');
+            $table->increments('id');
             $table->string('nombre')->unique();
-            $table->string('descripcion')->nullable();
             $table->timestamps();
         });
     }

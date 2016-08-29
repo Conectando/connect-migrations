@@ -4,15 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProgramaEducativo extends Model
+class DetalleEscuela extends Model
 {
-
+    
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'programas_educativos';
+    protected $table = 'detalles_escuelas';
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +20,10 @@ class ProgramaEducativo extends Model
      * @var array
      */
     protected $fillable = [
-        'nombre'
+        'escuela_id', 'clave_ct', 'nivel_id',
+        'academico_id', 'programa_id', 'turno', 
+        'correo', 'telefono', 'zona', 'sector', 
+        'sostenimiento'
     ];
 
     /**
@@ -37,9 +40,9 @@ class ProgramaEducativo extends Model
      * @var string
      * @return string
      */
-    public function getNombreAttribute($value)
+    public function getSostenimientoAttribute($value)
     {
-        return utf8_encode($this->attributes['nombre']);
+        return utf8_encode($this->attributes['sostenimiento']);
     }
     /**
      * The decode to utf8 name.
@@ -47,11 +50,11 @@ class ProgramaEducativo extends Model
      * @var string
      * @return void
      */
-    public function setNombreAttribute($value)
+    public function setSostenimientoAttribute($value)
     {
         if (!empty($value))
         {
-            $this->attributes['nombre'] = utf8_decode($value);
+            $this->attributes['sostenimiento'] = utf8_decode($value);
         }
     }
 

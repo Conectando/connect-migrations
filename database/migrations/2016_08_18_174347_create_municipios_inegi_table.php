@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNivelesEducativosTable extends Migration
+class CreateMunicipiosInegiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateNivelesEducativosTable extends Migration
      */
     public function up()
     {
-        Schema::create('niveles_educativos', function (Blueprint $table) {
+        Schema::create('municipios_inegi', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre')->unique();
             $table->timestamps();
@@ -26,6 +26,6 @@ class CreateNivelesEducativosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('niveles_educativos');
+        Schema::dropIfExists('municipios_inegi');
     }
 }

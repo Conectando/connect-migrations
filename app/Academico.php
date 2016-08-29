@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Academico extends Model
 {
-
+    
     /**
      * The table associated with the model.
      *
@@ -20,8 +20,8 @@ class Academico extends Model
      * @var array
      */
     protected $fillable = [
-        'rfc', 'nombre', 'telefono', 
-        'celular', 'correo_electronico'
+        'rfc', 'nombre', 'apaterno', 'amaterno',
+        'telefono', 'celular', 'correo'
     ];
 
     /**
@@ -30,6 +30,78 @@ class Academico extends Model
      * @var array
      */
     protected $hidden = [
-        'created_at', 'updated_at'
     ];
+    
+    /**
+     * return encode to utf8 name.
+     *
+     * @var string
+     * @return string
+     */
+    public function getNombreAttribute($value)
+    {
+        return utf8_encode($this->attributes['nombre']);
+    }
+    /**
+     * The decode to utf8 name.
+     *
+     * @var string
+     * @return void
+     */
+    public function setNombreAttribute($value)
+    {
+        if (!empty($value))
+        {
+            $this->attributes['nombre'] = utf8_decode($value);
+        }
+    }
+    
+    /**
+     * return encode to utf8 name.
+     *
+     * @var string
+     * @return string
+     */
+    public function getApaternoAttribute($value)
+    {
+        return utf8_encode($this->attributes['apaterno']);
+    }
+    /**
+     * The decode to utf8 name.
+     *
+     * @var string
+     * @return void
+     */
+    public function setApaternoAttribute($value)
+    {
+        if (!empty($value))
+        {
+            $this->attributes['apaterno'] = utf8_decode($value);
+        }
+    }
+
+    /**
+     * return encode to utf8 name.
+     *
+     * @var string
+     * @return string
+     */
+    public function getAmaternoAttribute($value)
+    {
+        return utf8_encode($this->attributes['amaterno']);
+    }
+    /**
+     * The decode to utf8 name.
+     *
+     * @var string
+     * @return void
+     */
+    public function setAmaternoAttribute($value)
+    {
+        if (!empty($value))
+        {
+            $this->attributes['amaterno'] = utf8_decode($value);
+        }
+    }
+
 }

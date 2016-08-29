@@ -15,27 +15,59 @@ class ProgramasEducativosTableSeeder extends Seeder
     {
 
 		$programas = [
-			'GENERAL',
-			'INDIGENA',
-			'CONAFE',
-			'CENDI',
-			'TECNICA',
-			'TELESECUNDARIA',
-			'PROFESIONAL MEDIO',
-			'TECNOLOGICO',
-			'BTS NO ESC',
-			'BIS NO ESC'
+			[
+				'nombre' => 'GENERAL',
+				'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+			],
+			[
+				'nombre' => 'INDIGENA',
+				'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+			],
+			[
+				'nombre' => 'CONAFE',
+				'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+			],
+			[
+				'nombre' => 'CENDI',
+				'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+			],
+			[
+				'nombre' => 'TECNICA',
+				'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+			],
+			[
+				'nombre' => 'TELESECUNDARIA',
+				'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+			],
+			[
+				'nombre' => 'PROFESIONAL MEDIO',
+				'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+			],
+			[
+				'nombre' => 'TECNOLOGICO',
+				'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+			],
+			[
+				'nombre' => 'BTS NO ESC',
+				'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+			],
+			[
+				'nombre' => 'BIS NO ESC',
+				'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+			],
 		];
         
-		foreach ($programas as $programa) 
-		{
-			$programaEducativo = ProgramaEducativo::create([
-	            'nombre' => $programa
-	        ]);	
-
-			$programaEducativo->save();
-
-		}
+        DB::table('programas_educativos')->insert($programas);
 
 
     }

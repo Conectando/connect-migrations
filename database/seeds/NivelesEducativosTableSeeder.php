@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\NivelEducativo;
 
 class NivelesEducativosTableSeeder extends Seeder
 {
@@ -14,21 +13,34 @@ class NivelesEducativosTableSeeder extends Seeder
     public function run()
     {
         $niveles = [
-            'PREESCOLAR',
-            'PRIMARIA',
-            'SECUNDARIA',
-            'BACHILLERATO',
-            'PROFESIONAL TECNICO'
+            [
+                'nombre' => 'PREESCOLAR',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            ],
+            [
+                'nombre' => 'PRIMARIA',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            ],
+            [
+                'nombre' => 'SECUNDARIA',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            ],
+            [
+                'nombre' => 'BACHILLERATO',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            ],
+            [
+                'nombre' => 'PROFESIONAL TECNICO',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            ],
         ];
-        
-        foreach ($niveles as $nivel) 
-        {
-            $nivelEducativo = NivelEducativo::create([
-                'nombre' => $nivel
-            ]); 
 
-            $nivelEducativo->save();
+        DB::table('niveles_educativos')->insert($niveles);
 
-        }
     }
 }

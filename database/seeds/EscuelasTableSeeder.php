@@ -2,8 +2,6 @@
 
 use Illuminate\Database\Seeder;
 
-use App\{Escuela, NivelEducativo};
-
 class EscuelasTableSeeder extends Seeder
 {
 
@@ -15,54 +13,73 @@ class EscuelasTableSeeder extends Seeder
     public function run()
     {
 
-    	$excel = storage_path('app/excel/listado_cct_activos.xlsx');
+    	$excel = storage_path('app/xlsx/listado_cct_activos.xlsx');
+
+        // $escuelas = [];
 
         Excel::load($excel, function($reader) {
 
-        	// $reader->limit(5);
+            $count = 0;
 
-        	$reader->each(function($sheet) {
+        	$reader->each(function($sheet) use (&$count) {
 
-        		$direccion = $sheet->domicilio == 'CONOCIDO' ? null : $sheet->domicilio;
+        		$direccion = ($sheet->domicilio == 'CONOCIDO' || $sheet->domicilio == 'CONOCIDA') ? 'undefined' : $sheet->domicilio;
+                $colonia = $sheet->nombre_colonia == '0' ? 'undefined' : $sheet->nombre_colonia;
+                $calleDerecha = $sheet->entre_calle == '0' ? 'undefined' : $sheet->entre_calle;
+                $calleIzquierda = $sheet->y_calle == '0' ? 'undefined' : $sheet->y_calle;
+                $codigoPostal = (int) $sheet->codigo_postal;
+                
 
-        		$count = null;
+        		$escuelas_count = DB::table('escuelas')->select()->where([
+                    // 'nombre_ct' => utf8_decode($sheet->nombre_ct),
+                    // 'direccion' => utf8_decode($direccion),
+                    // 'colonia' => utf8_decode($colonia),
+                    // 'calle_derecha' => utf8_decode($calleDerecha),
+                    // 'calle_izquierda' => utf8_decode($calleIzquierda),
+                    'codigo_postal' => $codigoPostal,
+                    'municipio_inegi_id' => (int) $sheet->municipio_clave_inegi,
+                    'localidad_inegi_id' => (int) $sheet->localidad_inegi,
+                    'latitud'            => (double) $sheet->latitud,
+                    'longitud'           => (double) $sheet->longitud,
+                ])->count();
 
-        		if($sheet->codigo_postal == '0') {
-        			$count = Escuela::where([
-	        			'nombre_ct'     => $sheet->nombre_ct,
-	        			'direccion'     => $direccion
-	        		])->count();
-				} else {
-					$count = Escuela::where([
-	        			'nombre_ct'     => $sheet->nombre_ct,
-	        			'codigo_postal' => $sheet->codigo_postal
-	        		])->count();
-				}
-
-        		if(!$count) {
-        			$escuela = Escuela::create([
-	        			'nombre_ct'       => $sheet->nombre_ct,
-	        			'correo'          => $sheet->correo,
-	        			'telefono'        => $sheet->telefono,
-	        			'direccion'       => $direccion,
-	        			'colonia'         => $sheet->nombre_colonia == '0' ? null : $sheet->nombre_colonia,
-	        			'municipio'       => $sheet->nombre_municipio,
-	        			'localidad'       => $sheet->nombre_localidad,
+        		if($escuelas_count == 0) {
+        			
+        			DB::table('escuelas')->insert([
+	        			'nombre_ct'       => utf8_decode($sheet->nombre_ct),
+	        			'direccion'       => utf8_decode($direccion),
+	        			'colonia'         => utf8_decode($colonia),
+	        			'calle_derecha'   => utf8_decode($calleDerecha),
+	        			'calle_izquierda' => utf8_decode($calleIzquierda),
+	        			'codigo_postal'   => $codigoPostal,
+	        			'municipio_inegi_id' => (int) $sheet->municipio_clave_inegi,
+	        			'localidad_inegi_id' => (int) $sheet->localidad_inegi,
 	        			'estado'          => 'JALISCO',
-	        			'calle_izquierda' => $sheet->entre_calle == '0' ? null : $sheet->entre_calle,
-	        			'calle_derecha'   => $sheet->y_calle == '0' ? null : $sheet->y_calle,
-	        			'codigo_postal'   => $sheet->codigo_postal == '0' ? null : $sheet->codigo_postal,
-	        			'latitud'         => $sheet->latitud,
-	        			'longitud'        => $sheet->longitud
-
+	        			'latitud'         => (double) $sheet->latitud,
+	        			'longitud'        => (double) $sheet->longitud,
+                        'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                        'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
 	        		]);
-	        		$escuela->save();
+
 				} else {
-					echo $sheet->clave_ct . " -> " . $sheet->nombre_ct . "\n";
-				}
-        		
+                    // echo "----------------------------------------\n";
+                    // echo "nombre_ct -> " . $sheet->nombre_ct . "\n";
+                    // echo "direccion -> " . $direccion . "\n";
+                    // echo "colonia -> " . $colonia . "\n";
+                    // echo "calle_derecha -> " . $calleDerecha . "\n";
+                    // echo "calle_izquierda -> " . $calleIzquierda . "\n";
+                    // echo "codigo_postal -> " . $codigoPostal . "\n";
+                    // echo "municipio_inegi_id -> " . (int) $sheet->municipio_clave_inegi . "\n";
+                    // echo "localidad_inegi_id" . (int) $sheet->localidad_inegi . "\n";
+                    // echo "latitud -> " . (double) $sheet->latitud . "\n";
+                    // echo "longitud -> " . (double) $sheet->longitud . "\n";
+                    $count++;
+                }
 
         	});
+
+            echo "----------------------------------------\n";
+            echo "Total repeats schools " . $count . "\n";
 
 		});
     }

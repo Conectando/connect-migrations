@@ -13,19 +13,18 @@ class CreateEscuelasTable extends Migration
     public function up()
     {
         Schema::create('escuelas', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->primary('id');
+            $table->increments('id');
             $table->string('nombre_ct');
-            $table->string('correo', 320);
-            $table->string('telefono', 13);
-            $table->string('direccion', 30)->nullable();
-            $table->string('colonia', 30)->nullable();
-            $table->string('municipio', 30)->nullable();
-            $table->string('localidad', 30)->nullable();
-            $table->string('estado', 30)->nullable();
-            $table->string('calle_derecha', 30)->nullable();
-            $table->string('calle_izquierda', 30)->nullable();
-            $table->string('codigo_postal', 5)->nullable();
+            $table->string('direccion', 30);
+            $table->string('colonia', 30);
+            $table->string('calle_derecha', 30);
+            $table->string('calle_izquierda', 30);
+            $table->integer('codigo_postal');
+            $table->integer('municipio_inegi_id');
+            $table->foreign('municipio_inegi_id')->references('id')->on('municipios_inegi');
+            $table->integer('localidad_inegi_id');
+            $table->foreign('localidad_inegi_id')->references('id')->on('localidades_inegi');
+            $table->string('estado', 30);
             $table->double('latitud');
             $table->double('longitud');
             $table->timestamps();

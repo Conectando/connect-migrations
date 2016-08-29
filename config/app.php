@@ -164,9 +164,16 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /*
-         *
+         * Required
          */
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
+        
+        /*
+         * Required dev
+         */
+        Barryvdh\Debugbar\ServiceProvider::class,
+
 
     ],
 
@@ -215,10 +222,15 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         /*
-         *
+         * Required
          */
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Uuid' => Webpatser\Uuid\Uuid::class,
+
+        /*
+         * Required dev
+         */
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

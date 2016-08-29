@@ -13,10 +13,10 @@ class CreateEscuelasAcademicosTable extends Migration
     public function up()
     {
         Schema::create('escuelas_academicos', function (Blueprint $table) {
-            $table->uuid('detalle_escuela_id');
+            $table->integer('detalle_escuela_id');
             $table->foreign('detalle_escuela_id')->references('id')->on('detalles_escuelas');
-            $table->string('rfc_academico', 13)->nullable();
-            $table->foreign('rfc_academico')->references('rfc')->on('academicos');
+            $table->integer('academico_id');
+            $table->foreign('academico_id')->references('id')->on('academicos');
         });
     }
 

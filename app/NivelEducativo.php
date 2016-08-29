@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class NivelEducativo extends Model
 {
 
-    use UuidForKey;
-
     /**
      * The table associated with the model.
      *
@@ -21,7 +19,9 @@ class NivelEducativo extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre', 'descripcion'];
+    protected $fillable = [
+        'nombre'
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -29,6 +29,30 @@ class NivelEducativo extends Model
      * @var array
      */
     protected $hidden = [
-    	'created_at', 'updated_at'
     ];
+
+    /**
+     * return encode to utf8 name.
+     *
+     * @var string
+     * @return string
+     */
+    public function getNombreAttribute($value)
+    {
+        return utf8_encode($this->attributes['nombre']);
+    }
+    /**
+     * The decode to utf8 name.
+     *
+     * @var string
+     * @return void
+     */
+    public function setNombreAttribute($value)
+    {
+        if (!empty($value))
+        {
+            $this->attributes['nombre'] = utf8_decode($value);
+        }
+    }
+
 }

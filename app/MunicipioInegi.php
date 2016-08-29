@@ -4,15 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProgramaEducativo extends Model
+class MunicipioInegi extends Model
 {
-
+    
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'programas_educativos';
+    protected $table = 'municipios_inegi';
 
     /**
      * The attributes that are mass assignable.
@@ -30,7 +30,7 @@ class ProgramaEducativo extends Model
      */
     protected $hidden = [
     ];
-
+    
     /**
      * return encode to utf8 name.
      *
@@ -54,5 +54,5 @@ class ProgramaEducativo extends Model
             $this->attributes['nombre'] = utf8_decode($value);
         }
     }
-
+    
 }

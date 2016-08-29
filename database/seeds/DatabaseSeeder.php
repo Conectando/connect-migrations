@@ -14,6 +14,9 @@ class DatabaseSeeder extends Seeder
         $this->call(AcademicosTableSeeder::class);
         $this->call(ProgramasEducativosTableSeeder::class);
         $this->call(NivelesEducativosTableSeeder::class);
-        $this->call(EscuelasTableSeeder::class);
+        $this->call(LocalidadesInegiTableSeeder::class);
+        $this->call(MunicipiosInegiTableSeeder::class);
+        // $this->call(EscuelasTableSeeder::class);
+        // $this->call(DetallesEscuelasTableSeeder::class);
     }
 }

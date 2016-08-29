@@ -13,16 +13,19 @@ class CreateDetallesEscuelasTable extends Migration
     public function up()
     {
         Schema::create('detalles_escuelas', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->primary('id');
-            $table->uuid('escuela_id');
+            
+            $table->increments('id');
+            $table->integer('escuela_id');
             $table->foreign('escuela_id')->references('id')->on('escuelas');
+            // clave de centro de trabajo
             $table->string('clave_ct');
-            $table->uuid('nivel_id');
+            $table->integer('nivel_id');
             $table->foreign('nivel_id')->references('id')->on('niveles_educativos');
-            $table->string('rfc_director', 13)->nullable();
-            $table->foreign('rfc_director')->references('rfc')->on('academicos');
-            $table->uuid('programa_id');
+            // academico_id hace referencia al director
+            $table->integer('academico_id')->nullable();
+            $table->foreign('academico_id')->references('id')->on('academicos');
+            
+            $table->integer('programa_id');
             $table->foreign('programa_id')->references('id')->on('programas_educativos');
             $table->enum('turno', [
                 'CONTINUO (JORNADA AMPLIADA)', 
@@ -32,9 +35,13 @@ class CreateDetallesEscuelasTable extends Migration
                 'NOCTURNO',
                 'VESPERTINO'
             ]);
-            $table->string('zona', 30);
+            $table->string('correo', 320)->nullable();
+            $table->string('telefono')->nullable();
+            $table->integer('zona');
+            $table->integer('sector');
             $table->string('sotenimiento', 30);
             $table->timestamps();
+        
         });
     }
 

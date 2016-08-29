@@ -2,8 +2,6 @@
 
 use Illuminate\Database\Seeder;
 
-use App\Academico;
-
 class AcademicosTableSeeder extends Seeder
 {
 
@@ -15,7 +13,7 @@ class AcademicosTableSeeder extends Seeder
     public function run()
     {
 
-    	$excel = storage_path('app/excel/listado_cct_activos.xlsx');
+    	$excel = storage_path('app/xlsx/listado_cct_activos.xlsx');
 
         Excel::load($excel, function($reader) {
 
@@ -28,15 +26,20 @@ class AcademicosTableSeeder extends Seeder
 		    		$sheet->director != 'ASIGNADO')
 		    	{
 
-		    		if(!Academico::where('nombre', $sheet->director)->count())
-		    		{
-		    			$academico = Academico::create([
-				    		'rfc' => $faker->ean13,
-				    		'nombre' => $sheet->director
-				    	]);
+		    		$count = DB::table('academicos')->select()->where('nombre', utf8_decode($sheet->director))->count();
 
-				    	$academico->save();
-		    		}
+		    		if($count == 0)
+		    		{
+		    			DB::table('academicos')->insert([
+				    		'rfc' => $faker->ean13, // rfc random
+				    		'nombre' => utf8_decode($sheet->director),
+				    		'telefono' => $faker->e164PhoneNumber, // telefono random
+				    		'celular' => $faker->e164PhoneNumber, // celular random
+				    		'correo'  => $faker->email, // correo random
+				    		'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                        	'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+				    	]);
+					}
 		    	}
 
 			});
