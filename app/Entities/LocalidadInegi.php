@@ -1,18 +1,21 @@
 <?php
 
-namespace App;
+namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Prettus\Repository\Contracts\Transformable;
+use Prettus\Repository\Traits\TransformableTrait;
 
-class MunicipioInegi extends Model
+class LocalidadInegi extends Model implements Transformable
 {
+    use TransformableTrait;
     
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'municipios_inegi';
+    protected $table = 'localidades_inegi';
 
     /**
      * The attributes that are mass assignable.
@@ -30,7 +33,7 @@ class MunicipioInegi extends Model
      */
     protected $hidden = [
     ];
-    
+
     /**
      * return encode to utf8 name.
      *
@@ -54,5 +57,5 @@ class MunicipioInegi extends Model
             $this->attributes['nombre'] = utf8_decode($value);
         }
     }
-    
+
 }

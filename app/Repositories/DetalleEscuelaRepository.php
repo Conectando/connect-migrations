@@ -2,8 +2,7 @@
 
 namespace App\Repositories;
 
-use Bosnadev\Repositories\Contracts\RepositoryInterface;
-use Bosnadev\Repositories\Eloquent\Repository;
+use Prettus\Repository\Eloquent\BaseRepository as Repository;
 
 /**
  * 
@@ -12,7 +11,7 @@ class DetalleEscuelaRepository extends Repository
 {
 	
 	public function model() {
-        return 'App\DetalleEscuela';
+        return 'App\Entities\DetalleEscuela';
     }
 
 }

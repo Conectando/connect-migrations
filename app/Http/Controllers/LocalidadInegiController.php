@@ -10,11 +10,11 @@ use App\Repositories\LocalidadInegiRepository as LocalidadInegi;
 class LocalidadInegiController extends Controller
 {
 
-    private $localidadInegi;
+    private $repository;
 
-    public function __construct(LocalidadInegi $localidadInegi)
+    public function __construct(LocalidadInegi $repository)
     {
-        $this->localidadInegi = $localidadInegi;
+        $this->repository = $repository;
     }
 
     /**
@@ -24,7 +24,7 @@ class LocalidadInegiController extends Controller
      */
     public function index()
     {
-        return \Response::json($this->localidadInegi->all());
+        return \Response::json($this->repository->paginate());
     }
 
     /**
@@ -56,7 +56,7 @@ class LocalidadInegiController extends Controller
      */
     public function show($id)
     {
-        return \Response::json($this->localidadInegi->find($id));
+        return \Response::json($this->repository->find($id));
     }
 
     /**

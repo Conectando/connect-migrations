@@ -10,15 +10,15 @@ use App\Repositories\NivelEducativoRepository as NivelEducativo;
 class NivelEducativoController extends Controller
 {
 
-    private $nivelEducativo;
+    private $repository;
 
     /**
      *
      * @param \App\Repositories\NivelEducativoRepository
      */
-    public function __construct(NivelEducativo $nivelEducativo) {
+    public function __construct(NivelEducativo $repository) {
 
-        $this->nivelEducativo = $nivelEducativo;
+        $this->repository = $repository;
     }
 
     /**
@@ -28,7 +28,7 @@ class NivelEducativoController extends Controller
      */
     public function index()
     {
-        return \Response::json($this->nivelEducativo->all());
+        return \Response::json($this->repository->paginate());
     }
 
     /**
@@ -60,7 +60,7 @@ class NivelEducativoController extends Controller
      */
     public function show($id)
     {
-        return \Response::json($this->nivelEducativo->find($id));
+        return \Response::json($this->repository->find($id));
     }
 
     /**
@@ -94,6 +94,6 @@ class NivelEducativoController extends Controller
      */
     public function destroy($id)
     {
-        return \Response::json($this->nivelEducativo->delete($id));
+        return \Response::json($this->repository->delete($id));
     }
 }

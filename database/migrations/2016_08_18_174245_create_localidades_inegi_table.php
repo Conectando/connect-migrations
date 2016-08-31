@@ -12,7 +12,7 @@ class CreateLocalidadesInegiTable extends Migration
      */
     public function up()
     {
-        Schema::create('localidades_inegi', function (Blueprint $table) {
+       Schema::create('localidades_inegi', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
             $table->timestamps();

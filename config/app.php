@@ -168,6 +168,7 @@ return [
          */
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
         
         /*
          * Required dev

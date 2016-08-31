@@ -10,15 +10,15 @@ use App\Repositories\EscuelaRepository as Escuela;
 class EscuelaController extends Controller
 {
 
-    private $escuela;
+    private $repository;
 
     /**
      *
      * @param \App\Repositories\EscuelaRepository
      */
-    public function __construct(Escuela $escuela)
+    public function __construct(Escuela $repository)
     {
-        $this->escuela = $escuela;
+        $this->repository = $repository;
     }
 
     /**
@@ -28,7 +28,7 @@ class EscuelaController extends Controller
      */
     public function index()
     {
-        return \Response::json($this->escuela->all());
+        return \Response::json($this->repository->paginate());
     }
 
     /**
@@ -60,7 +60,7 @@ class EscuelaController extends Controller
      */
     public function show($id)
     {
-        return \Response::json($this->escuela->find($id));
+        return \Response::json($this->repository->find($id));
     }
 
     /**
@@ -94,6 +94,6 @@ class EscuelaController extends Controller
      */
     public function destroy($id)
     {
-        return \Response::json($this->escuela->delete($id));
+        return \Response::json($this->repository->delete($id));
     }
 }

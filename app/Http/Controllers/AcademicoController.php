@@ -27,7 +27,8 @@ class AcademicoController extends Controller
      */
     public function index()
     {
-        return \Response::json($this->academico->all());
+        // return \Response::json($this->academico->all());
+        return \Response::json($this->academico->paginate());
     }
 
     /**

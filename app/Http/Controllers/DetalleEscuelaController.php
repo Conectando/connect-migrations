@@ -28,7 +28,7 @@ class DetalleEscuelaController extends Controller
      */
     public function index()
     {
-        return \Response::json($this->detalleEscuela->all());
+        return \Response::json($this->detalleEscuela->paginate());
     }
 
     /**

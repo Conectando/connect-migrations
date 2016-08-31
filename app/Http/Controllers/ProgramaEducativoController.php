@@ -10,15 +10,15 @@ use App\Repositories\ProgramaEducativoRepository as ProgramaEducativo;
 class ProgramaEducativoController extends Controller
 {
 
-    private $programaEducativo;
+    private $repository;
 
     /**
      *
      * @param \App\Repositories\ProgramaEducativoRepository
      */
-    public function __construct(ProgramaEducativo $programaEducativo)
+    public function __construct(ProgramaEducativo $repository)
     {
-        $this->programaEducativo = $programaEducativo;
+        $this->repository = $repository;
     }
 
     /**
@@ -28,7 +28,7 @@ class ProgramaEducativoController extends Controller
      */
     public function index()
     {
-        return \Response::json($this->programaEducativo->all());
+        return \Response::json($this->repository->paginate());
     }
 
     /**
@@ -60,7 +60,7 @@ class ProgramaEducativoController extends Controller
      */
     public function show($id)
     {
-        return \Response::json($this->programaEducativo->find($id));
+        return \Response::json($this->repository->find($id));
     }
 
     /**
@@ -94,6 +94,6 @@ class ProgramaEducativoController extends Controller
      */
     public function destroy($id)
     {
-        return \Response::json($this->programaEducativo->delete($id));
+        return \Response::json($this->repository->delete($id));
     }
 }

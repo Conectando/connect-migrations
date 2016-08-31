@@ -7,11 +7,11 @@ use Prettus\Repository\Eloquent\BaseRepository as Repository;
 /**
  * 
  */
-class EscuelaAcademicoRepository extends Repository 
+class EstadisticaRepository extends Repository 
 {
 	
 	public function model() {
-        return 'App\Entities\EscuelaAcademico';
+        return 'App\Entities\Estadistica';
     }
 
 }

@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Repositories\EscuelaAcademicoRepository as EscuelaAcademico;
+use App\Repositories\EstadisticaRepository as Estadistica;
 
-class EscuelaAcademicoController extends Controller
+class EstadisticaController extends Controller
 {
 
     private $repository;
 
-    public function __construct(EscuelaAcademico $repository)
+    public function __construct(Estadistica $repository)
     {
         $this->repository = $repository;
     }
@@ -56,7 +56,7 @@ class EscuelaAcademicoController extends Controller
      */
     public function show($id)
     {
-        //
+        return \Response::json($this->repository->find($id));
     }
 
     /**

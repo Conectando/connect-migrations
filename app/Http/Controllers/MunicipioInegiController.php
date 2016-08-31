@@ -10,11 +10,11 @@ use App\Repositories\MunicipioInegiRepository as MunicipioInegi;
 class MunicipioInegiController extends Controller
 {
 
-    private $municipioInegi;
+    private $repository;
 
-    public function __construct(MunicipioInegi $municipioInegi)
+    public function __construct(MunicipioInegi $repository)
     {
-        $this->municipioInegi = $municipioInegi;
+        $this->repository = $repository;
     }
 
 
@@ -25,7 +25,7 @@ class MunicipioInegiController extends Controller
      */
     public function index()
     {
-        return \Response::json($this->municipioInegi->all());
+        return \Response::json($this->repository->paginate());
     }
 
     /**
@@ -57,7 +57,7 @@ class MunicipioInegiController extends Controller
      */
     public function show($id)
     {
-        return \Response::json($this->municipioInegi->find($id));
+        return \Response::json($this->repository->find($id));
     }
 
     /**

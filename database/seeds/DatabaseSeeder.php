@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MunicipiosInegiTableSeeder::class);
         // $this->call(EscuelasTableSeeder::class);
         // $this->call(DetallesEscuelasTableSeeder::class);
+        // $this->call(EscuelasAcademicosTableSeeder::class);
+        // $this->call(IndicadoresTableSeeder::class);
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEscuelasAcademicosTable extends Migration
+class CreateIndicadoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,14 @@ class CreateEscuelasAcademicosTable extends Migration
      */
     public function up()
     {
-        Schema::create('escuelas_academicos', function (Blueprint $table) {
-            $table->integer('detalle_escuela_id');
+        Schema::create('indicadores', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('detalle_escuela_id')->unique();
             $table->foreign('detalle_escuela_id')->references('id')->on('detalles_escuelas');
-            $table->integer('academico_id');
-            $table->foreign('academico_id')->references('id')->on('academicos');
+            $table->double('desercion');
+            $table->double('reprobacion');
+            $table->double('reprobacion_regularizados');
+            $table->double('eficiencia');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateEscuelasAcademicosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('escuelas_academicos');
+        Schema::dropIfExists('indicadores');
     }
 }
