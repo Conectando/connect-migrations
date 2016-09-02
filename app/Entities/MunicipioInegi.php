@@ -58,4 +58,12 @@ class MunicipioInegi extends Model implements Transformable
         }
     }
     
+    /**
+     * Get the escuelas for the MunicipioInegi.
+     */
+    public function escuelas()
+    {
+        return $this->hasMany('App\Entities\Escuela', 'municipio_inegi_id', 'id');
+    }
+
 }

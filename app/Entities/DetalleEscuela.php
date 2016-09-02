@@ -61,4 +61,56 @@ class DetalleEscuela extends Model implements Transformable
         }
     }
 
+    /**
+     *
+     * Get the escuela record associated with the detalle escuela.
+     */
+    public function escuela()
+    {
+        return $this->hasOne('App\Entities\Escuela', 'id', 'escuela_id');
+    }
+
+    /**
+     *
+     * Get the nivelEducativo record associated with the detalle escuela.
+     */
+    public function nivel()
+    {
+        return $this->hasOne('App\Entities\NivelEducativo', 'id', 'nivel_id');
+    }
+
+    /**
+     *
+     * Get the academico record associated with the detalle escuela.
+     */
+    public function director()
+    {
+        return $this->hasOne('App\Entities\Academico', 'id', 'academico_id');
+    }
+
+    /**
+     *
+     * Get the programaEducativo record associated with the detalleEscuela.
+     */
+    public function programa()
+    {
+        return $this->hasOne('App\Entities\ProgramaEducativo', 'id', 'programa_id');
+    }
+
+    /**
+     * Get the Indicador that owns the DetalleEscuela.
+     */
+    public function indicador()
+    {
+        return $this->belongsTo('App\Entities\Indicador', 'id', 'detalle_escuela_id');
+    }
+
+    /**
+     * Get the estadistica that owns the DetalleEscuela.
+     */
+    public function estadistica()
+    {
+        return $this->belongsTo('App\Entities\Estadistica', 'id', 'detalle_escuela_id');
+    }
+
 }

@@ -156,4 +156,30 @@ class Escuela extends Model implements Transformable
         }
     }
 
+    /**
+     *
+     * Get the LocalidadInegi record associated with the Escuela.
+     */
+    public function localidad()
+    {
+        return $this->hasOne('App\Entities\LocalidadInegi', 'id', 'localidad_inegi_id');
+    }
+
+    /**
+     *
+     * Get the MunicipioInegi record associated with the Escuela.
+     */
+    public function municipio()
+    {
+        return $this->hasOne('App\Entities\MunicipioInegi', 'id', 'municipio_inegi_id');
+    }
+
+    /**
+     * Get the "detalles de escuelas" for the Escuela.
+     */
+    public function detalles()
+    {
+        return $this->hasMany('App\Entities\DetalleEscuela', 'escuela_id', 'id');
+    }
+
 }

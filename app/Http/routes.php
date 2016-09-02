@@ -14,7 +14,18 @@
 use Psr\Http\Message\ServerRequestInterface;
 
 Route::get('/', function () {
-    return view('welcome');
+    
+    $json = [
+        'data' => App\Entities\ProgramaEducativo::find(1),
+        '_embedded' => [
+            'escuelas' => App\Entities\ProgramaEducativo::find(1)->escuelas,
+        ]
+    ];
+
+    // dd($json);
+
+    return \Response::json($json);
+    // return view('welcome');
 });
 
 /**

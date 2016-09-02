@@ -58,4 +58,13 @@ class ProgramaEducativo extends Model implements Transformable
         }
     }
 
+    /**
+     *
+     * Get the escuelas record associated with the EscuelaAcademico.
+     */
+    public function escuelas()
+    {
+        return $this->hasMany('App\Entities\DetalleEscuela', 'programa_id', 'id');
+    }
+
 }

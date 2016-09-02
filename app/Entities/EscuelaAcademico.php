@@ -34,4 +34,22 @@ class EscuelaAcademico extends Model implements Transformable
     protected $hidden = [
     ];
 
+    /**
+     *
+     * Get the DetalleEscuela record associated with the EscuelaAcademico.
+     */
+    public function detalleEscuela()
+    {
+        return $this->hasOne('App\Entities\DetalleEscuela', 'id', 'detalle_escuela_id');
+    }
+
+    /**
+     *
+     * Get the Academico record associated with the Escuela.
+     */
+    public function academico()
+    {
+        return $this->hasOne('App\Entities\Academico', 'id', 'academico_id');
+    }
+
 }

@@ -24,6 +24,7 @@ class Estadistica extends Model implements Transformable
      * @var array
      */
     protected $fillable = [
+    	'detalle_escuela_id',
     	'hombres_primero',
 		'mujeres_primero',
 		'total_primero',
@@ -64,5 +65,14 @@ class Estadistica extends Model implements Transformable
      */
     protected $hidden = [
     ];
+
+    /**
+     *
+     * Get the DetalleEscuela record associated with the EscuelaAcademico.
+     */
+    public function detalleEscuela()
+    {
+        return $this->hasOne('App\Entities\DetalleEscuela', 'id', 'detalle_escuela_id');
+    }
 
 }

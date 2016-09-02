@@ -106,5 +106,13 @@ class Academico extends Model implements Transformable
             $this->attributes['amaterno'] = utf8_decode($value);
         }
     }
+    
+    /**
+     * Get the directorEscuelas for the DetallesEscuelas.
+     */
+    public function directorEscuelas()
+    {
+        return $this->hasMany('App\Entities\DetalleEscuela', 'academico_id', 'id');
+    }
 
 }
