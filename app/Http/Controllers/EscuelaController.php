@@ -10,7 +10,7 @@ use App\Repositories\EscuelaRepository as Escuela;
 class EscuelaController extends Controller
 {
 
-    private $repository;
+    protected $repository;
 
     /**
      *
@@ -60,6 +60,7 @@ class EscuelaController extends Controller
      */
     public function show($id)
     {
+        //->parseIncludes('detalles');
         return \Response::json($this->repository->find($id));
     }
 

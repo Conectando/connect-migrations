@@ -14,4 +14,9 @@ class EscuelaRepository extends Repository
         return 'App\Entities\Escuela';
     }
 
+    public function presenter()
+    {
+    	return 'App\\Presenters\\EscuelaPresenter';
+    }
+
 }

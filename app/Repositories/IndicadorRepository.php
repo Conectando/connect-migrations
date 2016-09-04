@@ -14,4 +14,9 @@ class IndicadorRepository extends Repository
         return 'App\Entities\Indicador';
     }
 
+    public function presenter()
+    {
+    	return 'App\Presenters\IndicadorPresenter';
+    }
+
 }

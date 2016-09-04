@@ -14,4 +14,9 @@ class LocalidadInegiRepository extends Repository
         return 'App\Entities\LocalidadInegi';
     }
 
+    public function presenter()
+    {
+    	return 'App\Presenters\LocalidadInegiPresenter';
+    }
+
 }

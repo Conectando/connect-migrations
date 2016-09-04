@@ -10,7 +10,7 @@ use App\Repositories\EstadisticaRepository as Estadistica;
 class EstadisticaController extends Controller
 {
 
-    private $repository;
+    protected $repository;
 
     public function __construct(Estadistica $repository)
     {
@@ -20,11 +20,16 @@ class EstadisticaController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param $school_id
+     * @param $detail_id
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($school_id, $detail_id)
     {
-        return \Response::json($this->repository->paginate());
+
+        return \Response::json($this->repository->findWhere([
+            'detalle_escuela_id' => $school_id,
+        ]));
     }
 
     /**

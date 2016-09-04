@@ -14,4 +14,9 @@ class DetalleEscuelaRepository extends Repository
         return 'App\Entities\DetalleEscuela';
     }
 
+    public function presenter()
+    {
+    	return 'App\\Presenters\\DetalleEscuelaPresenter';
+    }
+
 }

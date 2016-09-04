@@ -10,8 +10,11 @@ use App\Repositories\EscuelaAcademicoRepository as EscuelaAcademico;
 class EscuelaAcademicoController extends Controller
 {
 
-    private $repository;
+    protected $repository;
 
+    /**
+     * @param App\Repositories\EscuelaAcademicoRepository
+     */
     public function __construct(EscuelaAcademico $repository)
     {
         $this->repository = $repository;

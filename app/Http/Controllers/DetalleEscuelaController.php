@@ -10,7 +10,7 @@ use App\Repositories\DetalleEscuelaRepository as DetalleEscuela;
 class DetalleEscuelaController extends Controller
 {
 
-    private $detalleEscuela;
+    protected $repository;
 
     /**
      *
@@ -18,7 +18,7 @@ class DetalleEscuelaController extends Controller
      */
     public function __construct(DetalleEscuela $detalleEscuela)
     {
-        $this->detalleEscuela = $detalleEscuela;
+        $this->repository = $detalleEscuela;
     }
 
     /**
@@ -26,9 +26,11 @@ class DetalleEscuelaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($school_id)
     {
-        return \Response::json($this->detalleEscuela->paginate());
+        return \Response::json($this->repository->findWhere([
+            'escuela_id' => $school_id,
+        ]));
     }
 
     /**
@@ -58,9 +60,12 @@ class DetalleEscuelaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($school_id, $detail_id)
     {
-        return \Response::json($this->detalleEscuela->find($id));
+        return \Response::json($this->repository->findWhere([
+            'id' => $detail_id,
+            'escuela_id' => $school_id,
+        ]));
     }
 
     /**
@@ -94,6 +99,6 @@ class DetalleEscuelaController extends Controller
      */
     public function destroy($id)
     {
-        return \Response::json($this->detalleEscuela->delete($id));
+        return \Response::json($this->repository->delete($id));
     }
 }

@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\Supports\RepositoryTrait;
 use App\Http\Requests;
 use App\Repositories\AcademicoRepository as Academico;
 
+
+
 class AcademicoController extends Controller
 {
-    private $academico;
+
+    protected $repository;
 
     /**
      *
@@ -17,7 +21,7 @@ class AcademicoController extends Controller
      */
     public function __construct(Academico $academico) {
 
-        $this->academico = $academico;
+        $this->repository = $academico;
     }
 
     /**
@@ -27,8 +31,8 @@ class AcademicoController extends Controller
      */
     public function index()
     {
-        // return \Response::json($this->academico->all());
-        return \Response::json($this->academico->paginate());
+        // return \Response::json($this->repository->all());
+        return \Response::json($this->repository->paginate());
     }
 
     /**
@@ -60,7 +64,7 @@ class AcademicoController extends Controller
      */
     public function show($id)
     {
-        return \Response::json($this->academico->find($id));
+        return \Response::json($this->repository->find($id));
     }
 
     /**
@@ -94,6 +98,6 @@ class AcademicoController extends Controller
      */
     public function destroy($id)
     {
-        return \Response::json($this->academico->delete($id));
+        return \Response::json($this->repository->delete($id));
     }
 }

@@ -15,17 +15,17 @@ use Psr\Http\Message\ServerRequestInterface;
 
 Route::get('/', function () {
     
-    $json = [
-        'data' => App\Entities\ProgramaEducativo::find(1),
-        '_embedded' => [
-            'escuelas' => App\Entities\ProgramaEducativo::find(1)->escuelas,
-        ]
-    ];
+    // $json = [
+    //     'data' => App\Entities\ProgramaEducativo::find(1),
+    //     '_embedded' => [
+    //         'escuelas' => App\Entities\ProgramaEducativo::find(1)->escuelas,
+    //     ]
+    // ];
 
-    // dd($json);
+    // // dd($json);
 
-    return \Response::json($json);
-    // return view('welcome');
+    // return \Response::json($json);
+    return view('welcome');
 });
 
 /**

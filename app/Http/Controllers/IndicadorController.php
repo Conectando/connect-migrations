@@ -10,10 +10,10 @@ use App\Repositories\IndicadorRepository as Indicador;
 class IndicadorController extends Controller
 {
 
-    private $repository;
+    protected $repository;
 
 
-    public function __construc(Indicador $repository)
+    public function __construct(Indicador $repository)
     {
         $this->repository = $repository;
     }
@@ -23,9 +23,12 @@ class IndicadorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($school_id, $detail_id)
     {
-        return \Response::json($this->repository->paginate());
+
+        return \Response::json($this->repository->findWhere([
+            'detalle_escuela_id' => $school_id,
+        ]));
     }
 
     /**

@@ -14,4 +14,9 @@ class NivelEducativoRepository extends Repository
         return 'App\Entities\NivelEducativo';
     }
 
+    public function presenter()
+    {
+        return "App\\Presenters\\NivelEducativoPresenter";
+    }
+
 }

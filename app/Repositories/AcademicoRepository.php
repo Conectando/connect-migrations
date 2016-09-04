@@ -14,4 +14,9 @@ class AcademicoRepository extends Repository
         return 'App\Entities\Academico';
     }
 
+    public function presenter()
+    {
+        return "App\\Presenters\\AcademicoPresenter";
+    }
+
 }

@@ -14,4 +14,9 @@ class ProgramaEducativoRepository extends Repository
         return 'App\Entities\ProgramaEducativo';
     }
 
+    public function presenter()
+    {
+    	return 'App\Presenters\ProgramaEducativoPresenter';
+    }
+
 }

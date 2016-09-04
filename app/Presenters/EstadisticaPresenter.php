@@ -2,15 +2,15 @@
 
 namespace App\Presenters;
 
-use App\Transformers\TestTransformer;
+use App\Transformers\EstadisticaTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
- * Class TestPresenter
+ * Class EstadisticaPresenter
  *
  * @package namespace App\Presenters;
  */
-class TestPresenter extends FractalPresenter
+class EstadisticaPresenter extends FractalPresenter
 {
     /**
      * Transformer
@@ -19,6 +19,6 @@ class TestPresenter extends FractalPresenter
      */
     public function getTransformer()
     {
-        return new TestTransformer();
+        return new EstadisticaTransformer();
     }
 }

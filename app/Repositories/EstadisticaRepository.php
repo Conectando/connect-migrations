@@ -14,4 +14,9 @@ class EstadisticaRepository extends Repository
         return 'App\Entities\Estadistica';
     }
 
+    public function presenter()
+    {
+    	return 'App\Presenters\EstadisticaPresenter';
+    }
+
 }

@@ -14,4 +14,9 @@ class MunicipioInegiRepository extends Repository
         return 'App\Entities\MunicipioInegi';
     }
 
+    public function presenter()
+    {
+    	return 'App\Presenters\MunicipioInegiPresenter';
+    }
+
 }
