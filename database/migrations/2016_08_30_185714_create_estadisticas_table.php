@@ -16,7 +16,6 @@ class CreateEstadisticasTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('detalle_escuela_id')->unique();
-            $table->foreign('detalle_escuela_id')->references('id')->on('detalles_escuelas');
             $table->integer("hombres_primero")->unsigned();
             $table->integer("mujeres_primero")->unsigned();
             $table->integer("total_primero")->unsigned();
@@ -49,6 +48,7 @@ class CreateEstadisticasTable extends Migration
             $table->integer("director_sin_grupo")->unsigned();
             $table->integer("total_personal")->unsigned();
             $table->timestamps();
+            $table->foreign('detalle_escuela_id')->references('id')->on('detalles_escuelas');
         });
     }
 

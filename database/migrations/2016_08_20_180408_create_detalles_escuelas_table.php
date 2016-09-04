@@ -16,17 +16,13 @@ class CreateDetallesEscuelasTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('escuela_id');
-            $table->foreign('escuela_id')->references('id')->on('escuelas');
             // clave de centro de trabajo
             $table->string('clave_ct', 15);
             $table->integer('nivel_id');
-            $table->foreign('nivel_id')->references('id')->on('niveles_educativos');
             // academico_id hace referencia al director
             $table->integer('academico_id')->nullable();
-            $table->foreign('academico_id')->references('id')->on('academicos');
             
             $table->integer('programa_id');
-            $table->foreign('programa_id')->references('id')->on('programas_educativos');
             $table->enum('turno', [
                 'CONTINUO (JORNADA AMPLIADA)', 
                 'CONTINUO (TIEMPO COMPLETO)', 
@@ -42,6 +38,11 @@ class CreateDetallesEscuelasTable extends Migration
             $table->string('sotenimiento', 30);
             $table->timestamps();
         
+            $table->foreign('escuela_id')->references('id')->on('escuelas');
+            $table->foreign('nivel_id')->references('id')->on('niveles_educativos');
+            $table->foreign('academico_id')->references('id')->on('academicos');
+            $table->foreign('programa_id')->references('id')->on('programas_educativos');
+            
         });
     }
 
