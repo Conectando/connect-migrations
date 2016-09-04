@@ -15,7 +15,7 @@ class CreateEstadisticasTable extends Migration
         Schema::create('estadisticas', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('detalle_escuela_id')->unique();
+            $table->integer('detalle_escuela_id')->unsigned()->unique();
             $table->integer("hombres_primero")->unsigned();
             $table->integer("mujeres_primero")->unsigned();
             $table->integer("total_primero")->unsigned();
