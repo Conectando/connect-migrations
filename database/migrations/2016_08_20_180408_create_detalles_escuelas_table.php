@@ -13,12 +13,12 @@ class CreateDetallesEscuelasTable extends Migration
     public function up()
     {
         Schema::create('detalles_escuelas', function (Blueprint $table) {
-            
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('escuela_id');
             $table->foreign('escuela_id')->references('id')->on('escuelas');
             // clave de centro de trabajo
-            $table->string('clave_ct');
+            $table->string('clave_ct', 15);
             $table->integer('nivel_id');
             $table->foreign('nivel_id')->references('id')->on('niveles_educativos');
             // academico_id hace referencia al director

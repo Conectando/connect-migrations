@@ -13,6 +13,7 @@ class CreateEstadisticasTable extends Migration
     public function up()
     {
         Schema::create('estadisticas', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('detalle_escuela_id')->unique();
             $table->foreign('detalle_escuela_id')->references('id')->on('detalles_escuelas');

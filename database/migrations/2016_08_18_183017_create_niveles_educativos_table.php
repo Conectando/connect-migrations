@@ -13,8 +13,9 @@ class CreateNivelesEducativosTable extends Migration
     public function up()
     {
         Schema::create('niveles_educativos', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('nombre')->unique();
+            $table->string('nombre', 30)->unique();
             $table->timestamps();
         });
     }

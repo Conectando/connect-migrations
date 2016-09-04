@@ -13,8 +13,9 @@ class CreateLocalidadesInegiTable extends Migration
     public function up()
     {
        Schema::create('localidades_inegi', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('nombre');
+            $table->string('nombre', 30);
             $table->timestamps();
         });
     }
