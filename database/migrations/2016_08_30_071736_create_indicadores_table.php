@@ -15,7 +15,7 @@ class CreateIndicadoresTable extends Migration
         Schema::create('indicadores', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('detalle_escuela_id')->unique();
+            $table->integer('detalle_escuela_id')->unsigned()->unique();
             $table->double('desercion');
             $table->double('reprobacion');
             $table->double('reprobacion_regularizados');

@@ -15,14 +15,13 @@ class CreateDetallesEscuelasTable extends Migration
         Schema::create('detalles_escuelas', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('escuela_id');
             // clave de centro de trabajo
             $table->string('clave_ct', 15);
-            $table->integer('nivel_id');
+            $table->integer('escuela_id')->unsigned();
+            $table->integer('nivel_id')->unsigned();
             // academico_id hace referencia al director
-            $table->integer('academico_id')->nullable();
-            
-            $table->integer('programa_id');
+            $table->integer('academico_id')->unsigned()->nullable();
+            $table->integer('programa_id')->unsigned();
             $table->enum('turno', [
                 'CONTINUO (JORNADA AMPLIADA)', 
                 'CONTINUO (TIEMPO COMPLETO)', 
