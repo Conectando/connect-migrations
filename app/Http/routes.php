@@ -14,7 +14,7 @@
 use Psr\Http\Message\ServerRequestInterface;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('docs');
 });
 
 /**
