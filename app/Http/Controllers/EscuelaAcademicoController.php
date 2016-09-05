@@ -23,11 +23,15 @@ class EscuelaAcademicoController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  int  $school_id
+     * @param  int  $detail_id
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($school_id, $detail_id)
     {
-        return \Response::json($this->repository->paginate());
+        return \Response::json($this->repository->findWhere([
+            'detalle_escuela_id' => $detail_id 
+        ]));
     }
 
     /**
@@ -54,10 +58,12 @@ class EscuelaAcademicoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $school_id
+     * @param  int  $detail_id
+     * @param  int  $teacher_id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($school_id, $detail_id, $teacher_id)
     {
         //
     }

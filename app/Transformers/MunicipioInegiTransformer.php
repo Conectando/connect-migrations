@@ -13,6 +13,14 @@ class MunicipioInegiTransformer extends TransformerAbstract
 {
 
     /**
+     * List of resources to automatically include
+     *
+     * @var array
+     */
+    protected $defaultIncludes = [
+    ];
+
+    /**
      * Transform the \MunicipioInegi entity
      * @param \MunicipioInegi $model
      *
@@ -26,7 +34,7 @@ class MunicipioInegiTransformer extends TransformerAbstract
             'links'   => [
                 [
                     'rel' => 'self',
-                    'uri' => '/v0.1/inegi/municipalities/' . $model->id,
+                    'href' => '/v0.1/inegi/municipalities/' . $model->id,
                 ],
             ],
         ];

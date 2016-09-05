@@ -13,6 +13,14 @@ class LocalidadInegiTransformer extends TransformerAbstract
 {
 
     /**
+     * List of resources to automatically include
+     *
+     * @var array
+     */
+    protected $defaultIncludes = [
+    ];
+
+    /**
      * Transform the \LocalidadInegi entity
      * @param \LocalidadInegi $model
      *
@@ -26,7 +34,7 @@ class LocalidadInegiTransformer extends TransformerAbstract
             'links'   => [
                 [
                     'rel' => 'self',
-                    'uri' => '/v0.1/inegi/locations/' . $model->id,
+                    'href' => '/v0.1/inegi/locations/' . $model->id,
                 ],
             ],
         ];

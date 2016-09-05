@@ -13,6 +13,14 @@ class AcademicoTransformer extends TransformerAbstract
 {
 
     /**
+     * List of resources to automatically include
+     *
+     * @var array
+     */
+    protected $defaultIncludes = [
+    ];
+
+    /**
      * Transform the \Academico entity
      * @param \Academico $model
      *
@@ -32,7 +40,7 @@ class AcademicoTransformer extends TransformerAbstract
             'links'   => [
                 [
                     'rel' => 'self',
-                    'uri' => '/v0.1/academics/' . $model->id,
+                    'href' => '/v0.1/academics/' . $model->id,
                 ],
             ]
         ];

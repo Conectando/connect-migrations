@@ -13,9 +13,17 @@ class IndicadorTransformer extends TransformerAbstract
 {
 
     /**
-     * Transform the \Indicador entity
-     * @param \Indicador $model
+     * List of resources to automatically include
      *
+     * @var array
+     */
+    protected $defaultIncludes = [
+    ];
+
+    /**
+     * Transform the \Indicador entity
+     *
+     * @param \App\Entities\Indicador $model
      * @return array
      */
     public function transform(Indicador $model)
@@ -25,7 +33,7 @@ class IndicadorTransformer extends TransformerAbstract
             'links'   => [
                 [
                     'rel' => 'self',
-                    'uri' => '/v0.1/schools/' . 
+                    'href' => '/v0.1/schools/' . 
                              $model->detalleEscuela->escuela_id . 
                              '/details/' . $model->detalle_escuela_id . 
                              '/indicators'

@@ -13,6 +13,14 @@ class ProgramaEducativoTransformer extends TransformerAbstract
 {
 
     /**
+     * List of resources to automatically include
+     *
+     * @var array
+     */
+    protected $defaultIncludes = [
+    ];
+
+    /**
      * Transform the \ProgramaEducativo entity
      * @param \ProgramaEducativo $model
      *
@@ -26,7 +34,7 @@ class ProgramaEducativoTransformer extends TransformerAbstract
             'links'   => [
                 [
                     'rel' => 'self',
-                    'uri' => '/v0.1/educational/programs/' . $model->id,
+                    'href' => '/v0.1/educational/programs/' . $model->id,
                 ],
             ],
         ];

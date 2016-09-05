@@ -26,9 +26,8 @@ class EstadisticaController extends Controller
      */
     public function index($school_id, $detail_id)
     {
-
         return \Response::json($this->repository->findWhere([
-            'detalle_escuela_id' => $school_id,
+            'detalle_escuela_id' => $detail_id,
         ]));
     }
 

@@ -50,6 +50,10 @@ class DetalleEscuelaTransformer extends TransformerAbstract
                     'rel' => 'statistics',
                     'uri' => '/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id . '/statistics',
                 ],
+                [
+                    'rel' => 'teachers',
+                    'uri' => '/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id . '/teachers',
+                ],
             ]
         ];
     }

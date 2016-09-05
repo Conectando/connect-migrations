@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
+use JMS\Serializer\Annotation as Serializer;
+use Hateoas\Configuration\Annotation as Hateoas;
+
+/**
+ *
+ */
 class Academico extends Model implements Transformable
 {
     use TransformableTrait;

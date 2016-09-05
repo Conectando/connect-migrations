@@ -13,6 +13,14 @@ class NivelEducativoTransformer extends TransformerAbstract
 {
 
     /**
+     * List of resources to automatically include
+     *
+     * @var array
+     */
+    protected $defaultIncludes = [
+    ];
+
+    /**
      * Transform the \NivelEducativo entity
      * @param \NivelEducativo $model
      *
@@ -26,7 +34,7 @@ class NivelEducativoTransformer extends TransformerAbstract
             'links'   => [
                 [
                     'rel' => 'self',
-                    'uri' => '/v0.1/educational/levels/' . $model->id,
+                    'href' => '/v0.1/educational/levels/' . $model->id,
                 ],
             ],
         ];

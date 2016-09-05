@@ -18,9 +18,6 @@ class EscuelaTransformer extends TransformerAbstract
      * @var array
      */
     protected $defaultIncludes = [
-        // 'municipality',
-        // 'location',
-        // 'detalles',
     ];
 
     /**
@@ -42,11 +39,11 @@ class EscuelaTransformer extends TransformerAbstract
             'links'   => [
                 [
                     'rel' => 'self',
-                    'uri' => '/v0.1/schools/' . $model->id
+                    'href' => '/v0.1/schools/' . $model->id
                 ],
                 [
                     'rel' => 'details',
-                    'uri' => '/v0.1/schools/' . $model->id . '/details'
+                    'href' => '/v0.1/schools/' . $model->id . '/details'
                 ],
             ],
         ];
