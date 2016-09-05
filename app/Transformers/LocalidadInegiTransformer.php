@@ -34,7 +34,7 @@ class LocalidadInegiTransformer extends TransformerAbstract
             'links'   => [
                 [
                     'rel' => 'self',
-                    'href' => '/v0.1/inegi/locations/' . $model->id,
+                    'href' => '/api/v0.1/inegi/locations/' . $model->id,
                 ],
             ],
         ];

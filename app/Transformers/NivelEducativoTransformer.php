@@ -34,7 +34,7 @@ class NivelEducativoTransformer extends TransformerAbstract
             'links'   => [
                 [
                     'rel' => 'self',
-                    'href' => '/v0.1/educational/levels/' . $model->id,
+                    'href' => '/api/v0.1/educational/levels/' . $model->id,
                 ],
             ],
         ];

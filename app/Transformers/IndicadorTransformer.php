@@ -33,7 +33,7 @@ class IndicadorTransformer extends TransformerAbstract
             'links'   => [
                 [
                     'rel' => 'self',
-                    'href' => '/v0.1/schools/' . 
+                    'href' => '/api/v0.1/schools/' . 
                              $model->detalleEscuela->escuela_id . 
                              '/details/' . $model->detalle_escuela_id . 
                              '/indicators'

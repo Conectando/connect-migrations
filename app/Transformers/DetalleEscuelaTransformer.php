@@ -40,19 +40,19 @@ class DetalleEscuelaTransformer extends TransformerAbstract
             'links'   => [
                 [
                     'rel' => 'self',
-                    'uri' => '/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id,
+                    'href' => '/api/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id,
                 ],
                 [
                     'rel' => 'indicators',
-                    'uri' => '/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id . '/indicators',
+                    'href' => '/api/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id . '/indicators',
                 ],
                 [
                     'rel' => 'statistics',
-                    'uri' => '/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id . '/statistics',
+                    'href' => '/api/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id . '/statistics',
                 ],
                 [
                     'rel' => 'teachers',
-                    'uri' => '/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id . '/teachers',
+                    'href' => '/api/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id . '/teachers',
                 ],
             ]
         ];

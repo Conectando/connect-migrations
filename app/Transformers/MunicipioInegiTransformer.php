@@ -34,7 +34,7 @@ class MunicipioInegiTransformer extends TransformerAbstract
             'links'   => [
                 [
                     'rel' => 'self',
-                    'href' => '/v0.1/inegi/municipalities/' . $model->id,
+                    'href' => '/api/v0.1/inegi/municipalities/' . $model->id,
                 ],
             ],
         ];

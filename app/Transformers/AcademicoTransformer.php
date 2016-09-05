@@ -40,7 +40,7 @@ class AcademicoTransformer extends TransformerAbstract
             'links'   => [
                 [
                     'rel' => 'self',
-                    'href' => '/v0.1/academics/' . $model->id,
+                    'href' => '/api/v0.1/academics/' . $model->id,
                 ],
             ]
         ];
