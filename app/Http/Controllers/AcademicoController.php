@@ -8,18 +8,23 @@ use App\Http\Controllers\Supports\RepositoryTrait;
 use App\Http\Requests;
 use App\Repositories\AcademicoRepository as Academico;
 
-
-
+/**
+ *
+ */
 class AcademicoController extends Controller
 {
 
+    /**
+     * @var \App\Repositories\AcademicoRepository
+     */
     protected $repository;
 
     /**
      *
      * @param \App\Repositories\AcademicoRepository
      */
-    public function __construct(Academico $academico) {
+    public function __construct(Academico $academico) 
+    {
 
         $this->repository = $academico;
     }
@@ -31,7 +36,6 @@ class AcademicoController extends Controller
      */
     public function index()
     {
-        // return \Response::json($this->repository->all());
         return \Response::json($this->repository->paginate());
     }
 

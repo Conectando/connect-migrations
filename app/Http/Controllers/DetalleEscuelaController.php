@@ -7,9 +7,15 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Repositories\DetalleEscuelaRepository as DetalleEscuela;
 
+/**
+ *
+ */
 class DetalleEscuelaController extends Controller
 {
 
+    /**
+     * @var \App\Repositories\EscuelaRepository
+     */    
     protected $repository;
 
     /**

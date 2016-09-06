@@ -29,12 +29,12 @@ class IndicadorTransformer extends TransformerAbstract
     public function transform(Indicador $model)
     {
         return [
-            'desercion' => (double) $model->desercion,
-            'reprobacion' => [
-                'ordinaria' => (double) $model->reprobacion,
-                'regularizados' => (double) $model->reprobacion_regularizados,
+            'desertion' => (double) $model->desercion,
+            'reprobation' => [
+                'ordinary' => (double) $model->reprobacion,
+                'regularization' => (double) $model->reprobacion_regularizados,
             ],
-            'eficiencia' => (double) $model->eficiencia,
+            'efficiency' => (double) $model->eficiencia,
             'links'   => [
                 [
                     'rel' => 'self',
