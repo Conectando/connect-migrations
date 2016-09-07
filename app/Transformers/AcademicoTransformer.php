@@ -33,7 +33,7 @@ class AcademicoTransformer extends TransformerAbstract
             'rfc'               => $model->rfc,
             'name'              => $model->nombre,
             'last_name'         => $model->apaterno,
-            'second_last_name'  => $model->apaterno,
+            'second_last_name'  => $model->amaterno,
             'email'             => $model->correo,
             'telephone'         => $model->telefono,
             'mobile_phone'      => $model->celular,

@@ -28,7 +28,7 @@ class DetalleEscuelaTransformer extends TransformerAbstract
      */
     public function transform(DetalleEscuela $model)
     {
-        return [
+        $transform = [
             'id'         => (int) $model->id,
             'key'        => $model->clave_ct,
             'turn'       => $model->turno,
@@ -56,6 +56,16 @@ class DetalleEscuelaTransformer extends TransformerAbstract
                 ],
             ]
         ];
+
+        if(!is_null($model->academico_id))
+        {
+            array_push($transform['links'], [
+                'rel' => 'director',
+                'href' => '/api/v0.1/academics/' . $model->academico_id,
+            ]);
+        }
+
+        return $transform;
     }
 
     /**

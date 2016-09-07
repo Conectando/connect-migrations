@@ -24,14 +24,14 @@ Route::group(['prefix' => 'api'], function() {
     /**
      *
      */
-    Route::group(['prefix' => 'v0.1', 'middleware' => ['api', 'cors']], function() {
+    Route::group(['prefix' => 'v0.1', 'middleware' => ['api']], function() {
 
         /**
          *
          */
         Route::resource('academics', 'AcademicoController', [
             'only' => [
-                'index', 'show',
+                'index', 'show', 'store', 'update', 'destroy',
             ],
             'parameters' => [
                 'academics' => 'academic_id',

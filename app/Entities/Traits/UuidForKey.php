@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entities\Supports;
+namespace App\Entities\Traits;
 
 trait UuidForKey
 {

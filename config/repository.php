@@ -52,7 +52,7 @@ return [
          | Enable or disable cache
          |
          */
-        'enabled'    => true,
+        'enabled'    => env('REPOSITORY_CACHE_ENABLED', false),
 
         /*
          |--------------------------------------------------------------------------
@@ -62,7 +62,7 @@ return [
          | Time of expiration cache
          |
          */
-        'minutes'    => 30,
+        'minutes'    => env('REPOSITORY_CACHE_MINUTES', 30),
 
         /*
          |--------------------------------------------------------------------------

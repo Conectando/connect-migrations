@@ -57,7 +57,18 @@ class AcademicoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        try {
+
+            return \Response::json($this->repository->create( $this->transformToOrigin($request) ));
+
+        } catch (\Prettus\Validator\Exceptions\ValidatorException $e) {
+
+            return \Response::json([
+                'message' => $e->getMessageBag(),
+            ]);
+
+        }
     }
 
     /**
@@ -91,7 +102,17 @@ class AcademicoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+
+            return \Response::json($this->repository->update( $this->transformToOrigin($request), $id ));
+
+        } catch (\Prettus\Validator\Exceptions\ValidatorException $e) {
+
+            return \Response::json([
+                'message' => $e->getMessageBag(),
+            ]);
+
+        }
     }
 
     /**
@@ -104,4 +125,44 @@ class AcademicoController extends Controller
     {
         return \Response::json($this->repository->delete($id));
     }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @return array
+     */
+    protected function transformToOrigin(Request $request)
+    {
+        $origin = [];
+
+        if($request->isMethod('post'))
+        {
+            $origin = [
+                'rfc' => $request->input('rfc'),
+                'nombre' => $request->input('name'),
+                'apaterno' => $request->input('last_name'),
+                'amaterno' => $request->input('second_last_name'),
+                'correo' => $request->input('email'),
+                'telefono' => $request->input('telephone'),
+                'celular' => $request->input('mobile_phone'),
+            ];   
+        } else {
+            if($request->has('rfc'))
+                $origin['rfc'] = $request->input('rfc');
+            if($request->has('name'))
+                $origin['nombre'] = $request->input('name');
+            if($request->has('last_name'))
+                $origin['apaterno'] = $request->input('last_name');
+            if($request->has('second_last_name'))
+                $origin['amaterno'] = $request->input('second_last_name');
+            if($request->has('email'))
+                $origin['correo'] = $request->input('email');
+            if($request->has('telephone'))
+                $origin['telefono'] = $request->input('telephone');
+            if($request->has('mobile_phone'))
+                $origin['celular'] = $request->input('mobile_phone');
+        }
+
+        return $origin;
+    }
+
 }
