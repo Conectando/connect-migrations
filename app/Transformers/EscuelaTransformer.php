@@ -13,6 +13,17 @@ class EscuelaTransformer extends TransformerAbstract
 {
 
     /**
+     * List of resources possible to include
+     *
+     * @var array
+     */
+    protected $availableIncludes = [
+        'details',
+        'location',
+        'municipality',
+    ];
+
+    /**
      * List of resources to automatically include
      *
      * @var array
@@ -45,17 +56,25 @@ class EscuelaTransformer extends TransformerAbstract
                     'rel' => 'details',
                     'href' => '/api/v0.1/schools/' . $model->id . '/details'
                 ],
+                [
+                    'rel' => 'location',
+                    'href' => '/api/v0.1/inegi/locations/' . $model->localidad_inegi_id
+                ],
+                [
+                    'rel' => 'municipality',
+                    'href' => '/api/v0.1/inegi/municipalities/' . $model->municipio_inegi_id
+                ],
             ],
         ];
     }
 
     /**
-     * Include Detalles
+     * Include Details
      *
      * @param App\Entities\Escuela $escuela
-     * @return \League\Fractal\Resource\Item
+     * @return \League\Fractal\Resource\Collection
      */
-    public function includeDetalles(Escuela $escuela)
+    public function includeDetails(Escuela $escuela)
     {
         $detalles = $escuela->detalles;
 
@@ -87,7 +106,5 @@ class EscuelaTransformer extends TransformerAbstract
 
         return $this->item($municipality, new MunicipioInegiTransformer);
     }
-
-
 
 }

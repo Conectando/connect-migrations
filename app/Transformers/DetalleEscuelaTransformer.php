@@ -13,6 +13,16 @@ class DetalleEscuelaTransformer extends TransformerAbstract
 {
 
     /**
+     * List of resources possible to include
+     *
+     * @var array
+     */
+    protected $availableIncludes = [
+        'indicator',
+        'statistic',
+    ];
+
+    /**
      * List of resources to automatically include
      *
      * @var array
