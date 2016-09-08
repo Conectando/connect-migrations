@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('docs');
 });
 
+Route::get('maps', function () {
+    return view('maps');
+});
+
 /**
  *
  */
@@ -24,7 +28,7 @@ Route::group(['prefix' => 'api'], function() {
     /**
      *
      */
-    Route::group(['prefix' => 'v0.1', 'middleware' => ['api']], function() {
+    Route::group(['prefix' => 'v0.1', 'middleware' => ['api', 'cors']], function() {
 
         /**
          *
