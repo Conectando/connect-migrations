@@ -16,10 +16,10 @@ class CreateIndicadoresTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('detalle_escuela_id')->unsigned()->unique();
-            $table->double('desercion');
-            $table->double('reprobacion');
-            $table->double('reprobacion_regularizados');
-            $table->double('eficiencia');
+            $table->float('desercion');
+            $table->float('reprobacion');
+            $table->float('reprobacion_regularizados');
+            $table->float('eficiencia');
             $table->timestamps();
             $table->foreign('detalle_escuela_id')->references('id')->on('detalles_escuelas');
         });

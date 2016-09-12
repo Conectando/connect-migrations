@@ -46,6 +46,8 @@ class DetalleEscuelaTransformer extends TransformerAbstract
             'telephone'  => $model->telefono,
             'zone'       => $model->zona,
             'sector'     => $model->sector,
+            'level'      => $model->nivel->nombre,
+            'program'    => $model->programa->nombre,
             'sustenance' => $model->sotenimiento,
             'links'   => [
                 [

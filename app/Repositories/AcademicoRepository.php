@@ -8,8 +8,13 @@ use Prettus\Repository\Contracts\CacheableInterface;
 use Prettus\Repository\Traits\CacheableRepository;
 use Prettus\Validator\Contracts\ValidatorInterface;
 
+use App\Entities\Academico;
+use App\Presenters\AcademicoPresenter;
+use App\Validators\AcademicoValidator;
+
 /**
- * 
+ * Class AcademicoRepository
+ * @package namespace App\Repositories
  */
 class AcademicoRepository extends Repository implements CacheableInterface 
 {
@@ -17,12 +22,12 @@ class AcademicoRepository extends Repository implements CacheableInterface
     use CacheableRepository;
 	
     /**
-     * Specify ENtity class name
+     * Specify Entity class name
      *
      * @return mixed
      */
 	public function model() {
-        return 'App\Entities\Academico';
+        return Academico::class;
     }
 
     /**
@@ -32,7 +37,7 @@ class AcademicoRepository extends Repository implements CacheableInterface
      */
     public function presenter()
     {
-        return "App\\Presenters\\AcademicoPresenter";
+        return AcademicoPresenter::class;
     }
 
     /**
@@ -42,7 +47,7 @@ class AcademicoRepository extends Repository implements CacheableInterface
      */
     public function validator()
     {
-        return "App\\Validators\\AcademicoValidator";
+        return AcademicoValidator::class;
     }
 
 }

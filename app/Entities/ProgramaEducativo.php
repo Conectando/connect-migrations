@@ -13,6 +13,7 @@ class ProgramaEducativo extends Model implements Transformable
     /**
      * The table associated with the model.
      *
+     * @access protected
      * @var string
      */
     protected $table = 'programas_educativos';
@@ -20,6 +21,7 @@ class ProgramaEducativo extends Model implements Transformable
     /**
      * The attributes that are mass assignable.
      *
+     * @access protected
      * @var array
      */
     protected $fillable = [
@@ -29,6 +31,7 @@ class ProgramaEducativo extends Model implements Transformable
     /**
      * The attributes that should be hidden for arrays.
      *
+     * @access protected
      * @var array
      */
     protected $hidden = [

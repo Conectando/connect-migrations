@@ -24,6 +24,7 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(\App\Repositories\TestRepository::class, \App\Repositories\TestRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\PlaneaRepository::class, \App\Repositories\PlaneaRepositoryEloquent::class);
         //:end-bindings:
     }
 }

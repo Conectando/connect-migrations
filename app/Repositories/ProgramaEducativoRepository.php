@@ -6,6 +6,9 @@ use Prettus\Repository\Eloquent\BaseRepository as Repository;
 use Prettus\Repository\Contracts\CacheableInterface;
 use Prettus\Repository\Traits\CacheableRepository;
 
+use App\Entities\ProgramaEducativo;
+use App\Presenters\ProgramaEducativoPresenter;
+
 /**
  * 
  */
@@ -14,12 +17,12 @@ class ProgramaEducativoRepository extends Repository implements CacheableInterfa
     use CacheableRepository;
 	
 	public function model() {
-        return 'App\Entities\ProgramaEducativo';
+        return ProgramaEducativo::class;
     }
 
     public function presenter()
     {
-    	return 'App\Presenters\ProgramaEducativoPresenter';
+    	return ProgramaEducativoPresenter::class;
     }
 
 }

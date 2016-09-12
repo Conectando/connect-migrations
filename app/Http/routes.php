@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('maps', function () {
-    return view('maps');
+    return view('vue-maps');
 });
 
 /**
@@ -146,6 +146,20 @@ Route::group(['prefix' => 'api'], function() {
         /**
          *
          */
+        Route::resource('schools.details.plans', 'PlaneaController', [
+            'only' => [
+                'index',
+            ],
+            'parameters' => [
+                'schools' => 'school_id',
+                'details' => 'detail_id',
+                'plans' => 'plan_id',
+            ],
+        ]);
+
+        /**
+         *
+         */
         Route::resource('schools.details.teachers', 'EscuelaAcademicoController', [
             'only' => [
                 'index', 'show',
@@ -170,7 +184,7 @@ Route::group(['prefix' => 'api'], function() {
 
                 $offset = array_key_exists('offset', $queryParams) ? (is_numeric($queryParams['offset']) ? ($queryParams['offset'] < 1 ? 0 : ((int)$queryParams['offset'])) : 0 ) : 0;
 
-                $excel = storage_path('app/xlsx/listado_cct_activos.xlsx');
+                $excel = storage_path('app/xlsx/cct_listado_activos.xlsx');
                     
                 return Excel::load($excel, function($reader) use (&$limit, &$offset){ 
                     $reader->limit($limit, $offset);
@@ -201,6 +215,21 @@ Route::group(['prefix' => 'api'], function() {
                 $offset = array_key_exists('offset', $queryParams) ? (is_numeric($queryParams['offset']) ? ($queryParams['offset'] < 1 ? 0 : ((int)$queryParams['offset'])) : 0 ) : 0;
 
                 $excel = storage_path('app/xlsx/cct_indicadores.xlsx');
+                    
+                return Excel::load($excel, function($reader) use (&$limit, &$offset){ 
+                    $reader->limit($limit, $offset);
+                })->get();
+
+            });
+
+            Route::get('planea', function(ServerRequestInterface $request) {
+                
+                $queryParams = $request->getQueryParams();                
+                $limit = array_key_exists('limit', $queryParams) ? (is_numeric($queryParams['limit']) ? ($queryParams['limit'] < 1 ? 30 : ((int) $queryParams['limit'])) : 30 ) : 30;
+
+                $offset = array_key_exists('offset', $queryParams) ? (is_numeric($queryParams['offset']) ? ($queryParams['offset'] < 1 ? 0 : ((int)$queryParams['offset'])) : 0 ) : 0;
+
+                $excel = storage_path('app/xlsx/cct_planea.xlsx');
                     
                 return Excel::load($excel, function($reader) use (&$limit, &$offset){ 
                     $reader->limit($limit, $offset);

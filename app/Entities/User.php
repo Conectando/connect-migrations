@@ -13,6 +13,7 @@ class User extends Authenticatable implements Transformable
     /**
      * The attributes that are mass assignable.
      *
+     * @access protected
      * @var array
      */
     protected $fillable = [
@@ -22,6 +23,7 @@ class User extends Authenticatable implements Transformable
     /**
      * The attributes that should be hidden for arrays.
      *
+     * @access protected
      * @var array
      */
     protected $hidden = [

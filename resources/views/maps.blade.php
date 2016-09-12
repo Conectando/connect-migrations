@@ -68,7 +68,7 @@
         xhr.setRequestHeader("accept", "application/json");
         xhr.setRequestHeader("cache-control", "no-cache");
         xhr.setRequestHeader("postman-token", "b8cf1f6e-3b65-2cfe-0641-a3dfe8455199");
-        xhr.send(schools);
+        schools = xhr.send();
       }
 
       function initialize() {

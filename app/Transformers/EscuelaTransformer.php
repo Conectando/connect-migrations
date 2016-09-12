@@ -40,13 +40,16 @@ class EscuelaTransformer extends TransformerAbstract
     public function transform(Escuela $model)
     {
         return [
-            'id'          => (int) $model->id,
-            'name'        => $model->nombre_ct,
-            'address'     => $model->direccion,
-            'colony'      => $model->colonia,
-            'postal_code' => $model->codigo_postal,
-            'latitude'    => $model->latitud,
-            'longitude'   => $model->longitud,
+            'id'           => (int) $model->id,
+            'name'         => $model->nombre_ct,
+            'address'      => $model->direccion,
+            'colony'       => $model->colonia,
+            'postal_code'  => $model->codigo_postal,
+            'location'     => $model->localidad->nombre,
+            'municipality' => $model->municipio->nombre,
+            'state'        => $model->estado,
+            'latitude'     => $model->latitud,
+            'longitude'    => $model->longitud,
             'links'   => [
                 [
                     'rel' => 'self',

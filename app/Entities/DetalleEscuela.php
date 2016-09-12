@@ -113,4 +113,12 @@ class DetalleEscuela extends Model implements Transformable
         return $this->belongsTo('App\Entities\Estadistica', 'id', 'detalle_escuela_id');
     }
 
+    /**
+     * Get the planea that owns the DetalleEscuela.
+     */
+    public function planea()
+    {
+        return $this->belongsTo('App\Entities\Planea', 'id', 'detalle_escuela_id');
+    }
+
 }

@@ -19,6 +19,7 @@ class Academico extends Model implements Transformable
     /**
      * The table associated with the model.
      *
+     * @access protected
      * @var string
      */
     protected $table = 'academicos';
@@ -26,6 +27,7 @@ class Academico extends Model implements Transformable
     /**
      * The attributes that are mass assignable.
      *
+     * @access protected
      * @var array
      */
     protected $fillable = [
@@ -36,6 +38,7 @@ class Academico extends Model implements Transformable
     /**
      * The attributes that should be hidden for arrays.
      *
+     * @access protected
      * @var array
      */
     protected $hidden = [
@@ -51,6 +54,7 @@ class Academico extends Model implements Transformable
     {
         return utf8_encode($this->attributes['nombre']);
     }
+    
     /**
      * The decode to utf8 name.
      *
@@ -75,6 +79,7 @@ class Academico extends Model implements Transformable
     {
         return utf8_encode($this->attributes['apaterno']);
     }
+    
     /**
      * The decode to utf8 name.
      *
@@ -99,6 +104,7 @@ class Academico extends Model implements Transformable
     {
         return utf8_encode($this->attributes['amaterno']);
     }
+    
     /**
      * The decode to utf8 name.
      *

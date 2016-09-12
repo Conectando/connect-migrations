@@ -13,7 +13,7 @@ class AcademicosTableSeeder extends Seeder
     public function run()
     {
 
-    	$excel = storage_path('app/xlsx/listado_cct_activos.xlsx');
+    	$excel = storage_path('app/xlsx/cct_listado_activos.xlsx');
 
         Excel::load($excel, function($reader) {
 
