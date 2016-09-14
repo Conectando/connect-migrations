@@ -21,7 +21,7 @@ class CreateAcademicosTable extends Migration
             $table->string('amaterno', 25)->nullable();
             $table->string('telefono', 13)->nullable(); // +XX XX XXXX XXXX
             $table->string('celular', 14)->nullable();  // +XX X XX XXXX XXXX
-            $table->string('correo', 320)->nullable();
+            $table->string('correo', 100)->nullable();
             $table->timestamps();
         });
     }

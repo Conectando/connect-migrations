@@ -20,6 +20,7 @@ class DetalleEscuelaTransformer extends TransformerAbstract
     protected $availableIncludes = [
         'indicator',
         'statistic',
+        'plan',
     ];
 
     /**
@@ -44,38 +45,30 @@ class DetalleEscuelaTransformer extends TransformerAbstract
             'turn'       => $model->turno,
             'email'      => $model->correo,
             'telephone'  => $model->telefono,
-            'zone'       => $model->zona,
-            'sector'     => $model->sector,
+            'zone'       => (int) $model->zona,
+            'sector'     => (int) $model->sector,
             'level'      => $model->nivel->nombre,
             'program'    => $model->programa->nombre,
             'sustenance' => $model->sotenimiento,
             'links'   => [
-                [
-                    'rel' => 'self',
-                    'href' => '/api/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id,
-                ],
-                [
-                    'rel' => 'indicators',
-                    'href' => '/api/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id . '/indicators',
-                ],
-                [
-                    'rel' => 'statistics',
-                    'href' => '/api/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id . '/statistics',
-                ],
-                [
-                    'rel' => 'teachers',
-                    'href' => '/api/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id . '/teachers',
-                ],
+                'self' => '/api/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id,
+                'indicators' => '/api/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id . '/indicators',
+                'statistics'  => '/api/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id . '/statistics',
+                'plans'  => '/api/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id . '/plans',
+                'teachers' => '/api/v0.1/schools/' . $model->escuela_id . '/details/' . $model->id . '/teachers',
+                'director' => null,
             ]
         ];
 
+        if(is_null($model->planea))
+        {
+            $transform['links']['plans'] = null; 
+        }
+
         if(!is_null($model->academico_id))
         {
-            array_push($transform['links'], [
-                'rel' => 'director',
-                'href' => '/api/v0.1/academics/' . $model->academico_id,
-            ]);
-        }
+            $transform['links']['director'] = '/api/v0.1/academics/' . $model->academico_id;
+        } 
 
         return $transform;
     }
@@ -93,9 +86,21 @@ class DetalleEscuelaTransformer extends TransformerAbstract
         return $this->item($indicator, new IndicadorTransformer);
     }
 
+    /**
+     * Include Plan
+     *
+     * @param App\Entities\Escuela $detalleEscuela
+     * @return \League\Fractal\Resource\Item
+     */
+    public function includePlan(DetalleEscuela $detalleEscuela)
+    {
+        $plan = $detalleEscuela->planea;
+        return is_null($plan) ? $plan : $this->item($plan, new PlaneaTransformer);
+        // return $this->item($plan, new PlaneaTransformer);
+    }
 
     /**
-     * Include Indicator
+     * Include Statisctic
      *
      * @param App\Entities\Escuela $detalleEscuela
      * @return \League\Fractal\Resource\Item

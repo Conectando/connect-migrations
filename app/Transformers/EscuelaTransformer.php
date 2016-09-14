@@ -44,29 +44,17 @@ class EscuelaTransformer extends TransformerAbstract
             'name'         => $model->nombre_ct,
             'address'      => $model->direccion,
             'colony'       => $model->colonia,
-            'postal_code'  => $model->codigo_postal,
+            'postal_code'  => (int) $model->codigo_postal,
             'location'     => $model->localidad->nombre,
             'municipality' => $model->municipio->nombre,
             'state'        => $model->estado,
-            'latitude'     => $model->latitud,
-            'longitude'    => $model->longitud,
+            'latitude'     => (double) $model->latitud,
+            'longitude'    => (double) $model->longitud,
             'links'   => [
-                [
-                    'rel' => 'self',
-                    'href' => '/api/v0.1/schools/' . $model->id
-                ],
-                [
-                    'rel' => 'details',
-                    'href' => '/api/v0.1/schools/' . $model->id . '/details'
-                ],
-                [
-                    'rel' => 'location',
-                    'href' => '/api/v0.1/inegi/locations/' . $model->localidad_inegi_id
-                ],
-                [
-                    'rel' => 'municipality',
-                    'href' => '/api/v0.1/inegi/municipalities/' . $model->municipio_inegi_id
-                ],
+                'self' => '/api/v0.1/schools/' . $model->id,
+                'details' => '/api/v0.1/schools/' . $model->id . '/details',
+                'location' => '/api/v0.1/inegi/locations/' . $model->localidad_inegi_id,
+                'municipality' => '/api/v0.1/inegi/municipalities/' . $model->municipio_inegi_id,
             ],
         ];
     }

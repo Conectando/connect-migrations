@@ -37,9 +37,11 @@ class PlaneaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($school_id, $detail_id)
     {
-        return \Response::json($this->repository->paginate());
+        return \Response::json($this->repository->findWhere([
+            'detalle_escuela_id' => $detail_id,
+        ]));
     }
 
     /**

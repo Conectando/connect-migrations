@@ -44,13 +44,7 @@ class IndicadorTransformer extends TransformerAbstract
             ],
             'efficiency' => (double) $model->eficiencia,
             'links'   => [
-                [
-                    'rel' => 'self',
-                    'href' => '/api/v0.1/schools/' . 
-                             $model->detalleEscuela->escuela_id . 
-                             '/details/' . $model->detalle_escuela_id . 
-                             '/indicators'
-                ],
+                'self' => '/api/v0.1/schools/' . $model->detalleEscuela->escuela_id . '/details/' . $model->detalle_escuela_id . '/indicators',
             ],
         ];
     }

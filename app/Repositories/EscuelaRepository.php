@@ -27,6 +27,8 @@ class EscuelaRepository extends Repository implements CacheableInterface {
      */
     protected $fieldSearchable = [
         'nombre_ct',
+        'municipio_inegi_id',
+        'localidad_inegi_id',
     ];
 
     /**

@@ -46,10 +46,7 @@ class AcademicoTransformer extends TransformerAbstract
             'telephone'         => $model->telefono,
             'mobile_phone'      => $model->celular,
             'links'   => [
-                [
-                    'rel' => 'self',
-                    'href' => '/api/v0.1/academics/' . $model->id,
-                ],
+                'self' => '/api/v0.1/academics/' . $model->id,
             ]
         ];
     }

@@ -23,18 +23,19 @@ class CreateDetallesEscuelasTable extends Migration
             $table->integer('academico_id')->unsigned()->nullable();
             $table->integer('programa_id')->unsigned();
             $table->enum('turno', [
-                'CONTINUO (JORNADA AMPLIADA)', 
-                'CONTINUO (TIEMPO COMPLETO)', 
+                'JORNADA_AMPLIADA', 
+                'TIEMPO_COMPLETO', 
                 'DISCONTINUO',
                 'MATUTINO',
                 'NOCTURNO',
                 'VESPERTINO'
             ]);
-            $table->string('correo', 320)->nullable();
+            $table->string('correo', 100)->nullable();
             $table->string('telefono')->nullable();
             $table->integer('zona');
             $table->integer('sector');
-            $table->string('sotenimiento', 30);
+            // $table->integer('sostenimiento')->unsigned();
+            $table->string('sotenimiento', 25);
             $table->timestamps();
         
             $table->foreign('escuela_id')->references('id')->on('escuelas');

@@ -62,26 +62,28 @@ class DetallesEscuelasTableSeeder extends Seeder
 
             $reader->each(function($sheet) use (&$getIdNivel, &$getIdPrograma, &$getIdAcademico, &$count) {
                 
-                $direccion = ($sheet->domicilio == 'CONOCIDO' || $sheet->domicilio == 'CONOCIDA') ? 'undefined' : $sheet->domicilio;
-                $colonia = $sheet->nombre_colonia == '0' ? 'undefined' : $sheet->nombre_colonia;
-                $calleDerecha = $sheet->entre_calle == '0' ? 'undefined' : $sheet->entre_calle;
-                $calleIzquierda = $sheet->y_calle == '0' ? 'undefined' : $sheet->y_calle;
+                $nombre_ct = trim(utf8_decode($sheet->nombre_ct));
+                $direccion = ($sheet->domicilio == 'CONOCIDO' || $sheet->domicilio == 'CONOCIDA') ? 'undefined' : trim(utf8_decode($sheet->domicilio));
+                $colonia = $sheet->nombre_colonia == '0' ? 'undefined' : trim(utf8_decode($sheet->nombre_colonia));
+                $calleDerecha = $sheet->entre_calle == '0' ? 'undefined' : trim(utf8_decode($sheet->entre_calle));
+                $calleIzquierda = $sheet->y_calle == '0' ? 'undefined' : trim(utf8_decode($sheet->y_calle));
                 $codigoPostal = (int) $sheet->codigo_postal;
-                $correo = $sheet->correo == '0' ? 'undefined' : $sheet->correo;
-                $telefono = $sheet->telefono == '0' ? 'undefined' : $sheet->telefono;
 
-                $escuela = DB::table('escuelas')->select()->where([
-                    // 'nombre_ct' => utf8_decode($sheet->nombre_ct),
-                    // 'direccion' => utf8_decode($direccion),
-                    // 'colonia' => utf8_decode($colonia),
-                    // 'calle_derecha' => utf8_decode($calleDerecha),
-                    //'calle_izquierda' => utf8_decode($calleIzquierda),
-                    'codigo_postal' => $codigoPostal,
-                    'municipio_inegi_id' => (int) $sheet->municipio_clave_inegi,
-                    'localidad_inegi_id' => (int) $sheet->localidad_inegi,
-                    'latitud'            => (double) $sheet->latitud,
-                    'longitud'           => (double) $sheet->longitud,
-                ])->first();
+                $vars = array();
+
+                array_push($vars, 
+                    ['nombre_ct', 'like', '%' . $nombre_ct . '%'],
+                    // 'direccion' => $direccion,
+                    // 'colonia' => $colonia,
+                    // 'calle_derecha' => $calleDerecha,
+                    // 'calle_izquierda' => $calleIzquierda,
+                    ['codigo_postal'     , '=', (int) $codigoPostal],
+                    ['municipio_inegi_id', '=', (int) $sheet->municipio_clave_inegi],
+                    ['localidad_inegi_id', '=', (int) $sheet->localidad_inegi],
+                    ['latitud'           , '=', (double) $sheet->latitud],
+                    ['longitud'          , '=', (double) $sheet->longitud]);
+
+                $escuela = DB::table('escuelas')->select()->where($vars)->first();
 
                 try {
 
@@ -93,8 +95,8 @@ class DetallesEscuelasTableSeeder extends Seeder
                             'academico_id' => $getIdAcademico($sheet->director),
                             'programa_id'  => $getIdPrograma($sheet->programa),
                             'turno'        => $sheet->nom_turno,
-                            'correo'       => $correo,
-                            'telefono'     => $telefono,
+                            'correo'       => $sheet->correo,
+                            'telefono'     => $sheet->telefono,
                             'zona'         => $sheet->zona_escolar,
                             'sector'       => $sheet->sector,
                             'sotenimiento' => $sheet->nom_sost,

@@ -88,13 +88,7 @@ class EstadisticaTransformer extends TransformerAbstract
             ],
             'groups' => (int) $model->grupos,
             'links'   => [
-                [
-                    'rel' => 'self',
-                    'href' => '/api/v0.1/schools/' . 
-                             $model->detalleEscuela->escuela_id . 
-                             '/details/' . $model->detalle_escuela_id . 
-                             '/statistics'
-                ],
+                'self' => '/api/v0.1/schools/' . $model->detalleEscuela->escuela_id . '/details/' . $model->detalle_escuela_id . '/statistics',
             ],
         ];
     }
