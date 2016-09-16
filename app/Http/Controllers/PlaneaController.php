@@ -25,6 +25,7 @@ class PlaneaController extends Controller
      * @var PlaneaValidator
      */
     protected $validator;
+    
 
     public function __construct(PlaneaRepository $repository)
     {

@@ -15,7 +15,19 @@ use Psr\Http\Message\ServerRequestInterface;
 
 Route::get('/', 'HomeController@index');
 
-Route::get('search-schools', 'HomeController@searchSchool');
+Route::group(['prefix' => 'schools'], function() {
+    
+    /**
+     *
+     */
+    Route::get('search', 'EscuelaController@search');
+
+    /**
+     *
+     */
+    Route::get('show/{school_id}', 'EscuelaController@showSchool');
+
+});
 
 
 /**

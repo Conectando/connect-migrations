@@ -20,13 +20,13 @@
           <ul class="right hide-on-med-and-down">
             <li><a href="/">Inicio</a></li>
             <li><a href="#">Datos Públicos</a></li>
-            <li><a href="/search-schools">Escuelas</a></li>
+            <li><a href="/schools/search">Escuelas</a></li>
             <li><a href="#"><i class="material-icons left">perm_identity</i>Iniciar sesión</a></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><a href="/">Inicio</a></li>
             <li><a href="#">Datos Públicos</a></li>
-            <li><a href="/search-schools">Escuelas</a></li>
+            <li><a href="/schools/search">Escuelas</a></li>
             <li><a href="#"><i class="material-icons left">perm_identity</i>Iniciar sesión</a></li>
           </ul>
         </div>

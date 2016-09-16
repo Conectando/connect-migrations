@@ -36,9 +36,20 @@ class EscuelaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function search()
     {
-        //
+        return view('search');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showSchool($id)
+    {
+        return view('show');
     }
 
     /**
