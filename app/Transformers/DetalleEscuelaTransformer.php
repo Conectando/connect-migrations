@@ -29,7 +29,6 @@ class DetalleEscuelaTransformer extends TransformerAbstract
      * @var array
      */
     protected $defaultIncludes = [
-        'plan'
     ];
 
     /**
