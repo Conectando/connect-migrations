@@ -29,6 +29,7 @@ class EscuelaTransformer extends TransformerAbstract
      * @var array
      */
     protected $defaultIncludes = [
+        'details',
     ];
 
     /**

@@ -51,8 +51,7 @@ class IndicadoresTableSeeder extends Seeder
                                 'turno' => $turno,
             					'nivel_id' => $nivel_id,
             					'programa_id' => $programa_id,
-            				])
-            				->first();
+            				]) ->first();
         };
 
 

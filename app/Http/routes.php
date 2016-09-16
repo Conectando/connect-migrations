@@ -13,13 +13,8 @@
 
 use Psr\Http\Message\ServerRequestInterface;
 
-Route::get('/', function () {
-    return view('docs');
-});
+Route::get('/', 'HomeController@index');
 
-Route::get('maps', function () {
-    return view('vue-maps');
-});
 
 /**
  *

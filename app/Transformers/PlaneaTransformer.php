@@ -21,12 +21,57 @@ class PlaneaTransformer extends TransformerAbstract
     public function transform(Planea $model)
     {
         return [
-            'id'         => (int) $model->id,
-
-            /* place your other model properties here */
-
-            'created_at' => $model->created_at,
-            'updated_at' => $model->updated_at
+            'size' => $model->alumnos_programados_prueba,
+            'subjects_evaluated' => [
+                'mathematics' => [
+                    [
+                        'grade' => 'i',
+                        'percentage' => $model->nivel_i_matematicas,
+                    ],
+                    [
+                        'grade' => 'ii',
+                        'percentage' => $model->nivel_ii_matematicas,
+                    ],
+                    [
+                        'grade' => 'iii',
+                        'percentage' => $model->nivel_iii_matematicas,
+                    ],
+                    [
+                        'grade' => 'iv',
+                        'percentage' => $model->nivel_iv_matematicas,
+                    ],
+                ],
+                'literature' => [
+                    [
+                        'grade' => 'i',
+                        'percentage' => $model->nivel_i_lenguaje_y_comunicacion,
+                    ],
+                    [
+                        'grade' => 'ii',
+                        'percentage' => $model->nivel_ii_lenguaje_y_comunicacion,
+                    ],
+                    [
+                        'grade' => 'iii',
+                        'percentage' => $model->nivel_iii_lenguaje_y_comunicacion,
+                    ],
+                    [
+                        'grade' => 'iv',
+                        'percentage' => $model->nivel_iv_lenguaje_y_comunicacion,
+                    ],
+                ]
+            ],
+            'evaluated' => [
+                'mathematics' => $model->porcentaje_de_evaluados_matematicas,
+                'literature'  => $model->porcentaje_de_evaluados_lenguaje_y_comunicacion,
+            ],
+            'reliability' => [
+                'mathematics' => (bool)$model->informacion_poco_confiable_matematicas,
+                'literature' => (bool)$model->informacion_poco_confiable_lenguaje_y_comunicacion,
+            ],
+            'representation' => [
+                'mathematics' => (bool)$model->la_prueba_es_representativa_matematicas,
+                'literature' => (bool)$model->la_prueba_es_representativa_leguaje_y_comunicacion,
+            ],
         ];
     }
 }

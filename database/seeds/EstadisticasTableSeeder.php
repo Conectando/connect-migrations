@@ -47,9 +47,9 @@ class EstadisticasTableSeeder extends Seeder
             return  DB::table('detalles_escuelas')
             				->select()
             				->where([
-            					'clave_ct' => $clave_ct,
-                                'turno' => $turno,
-            					'nivel_id' => $nivel_id,
+            					'clave_ct'    => $clave_ct,
+                                'turno'       => $turno,
+            					'nivel_id'    => $nivel_id,
             					'programa_id' => $programa_id,
             				])
             				->first();

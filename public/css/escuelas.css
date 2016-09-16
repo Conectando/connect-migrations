@@ -1,0 +1,55 @@
+header, main, footer {
+    padding-left: 350px;
+}
+
+.search{
+	margin-top: 30px;
+}
+
+nav.top-nav a.brand-logo {
+    line-height: 122px;
+    font-size: 48px;
+}
+
+nav.top-nav {
+    height: 122px;
+    box-shadow: none;
+}
+
+a.button-collapse.top-nav {
+    position: absolute;
+    text-align: center;
+    height: 48px;
+    width: 48px;
+    left: 7.5%;
+    top: 0;
+    float: none;
+    margin-left: 1.5rem;
+    color: #fff;
+    font-size: 36px;
+    z-index: 2;
+}
+
+.school-rating .material-icons {
+    color: #FAAA00;
+}
+
+@media only screen and (max-width: 992px){
+	header, main, footer{ 
+	    padding-left: 0;
+	}
+}
+
+@media only screen and (max-width: 992px){
+	nav .nav-wrapper a.page-title {
+	    font-size: 36px;
+	}
+}	
+
+@media only screen and (max-width: 992px){
+	nav .nav-wrapper {
+	    text-align: center;
+	}
+}	
+
+
