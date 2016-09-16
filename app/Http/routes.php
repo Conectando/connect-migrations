@@ -15,6 +15,8 @@ use Psr\Http\Message\ServerRequestInterface;
 
 Route::get('/', 'HomeController@index');
 
+Route::get('search-school', 'HomeController@searchSchool');
+
 
 /**
  *
