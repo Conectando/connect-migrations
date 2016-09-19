@@ -12,10 +12,5 @@ class HomeController extends Controller
     {
     	return view('home');
     }
-
-    public function searchSchool()
-    {
-    	return view('search-school');
-    }
-
+    
 }
