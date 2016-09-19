@@ -28,7 +28,7 @@ class EscuelaTransformer extends TransformerAbstract
      *
      * @var array
      */
-    protected $defaultIncludes = [
+    protected $defaultIncludes = [ 
     ];
 
     /**
@@ -80,9 +80,9 @@ class EscuelaTransformer extends TransformerAbstract
      */
     public function includeLocation(Escuela $escuela)
     {
-        $localidad = $escuela->localidad;
+        $location = $escuela->localidad;
 
-        return $this->item($localidad, new LocalidadInegiTransformer);
+        return is_null($location) ? $location : $this->item($location, new LocalidadInegiTransformer);
     }
 
     /**
@@ -95,7 +95,7 @@ class EscuelaTransformer extends TransformerAbstract
     {
         $municipality = $escuela->municipio;
 
-        return $this->item($municipality, new MunicipioInegiTransformer);
+        return is_null($municipality) ? $municipality : $this->item($municipality, new MunicipioInegiTransformer);
     }
 
 }

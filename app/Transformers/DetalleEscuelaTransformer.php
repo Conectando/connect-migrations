@@ -29,9 +29,6 @@ class DetalleEscuelaTransformer extends TransformerAbstract
      * @var array
      */
     protected $defaultIncludes = [
-        // 'indicator',
-        // 'statistic',
-        // 'plan',
     ];
 
     /**
@@ -86,7 +83,7 @@ class DetalleEscuelaTransformer extends TransformerAbstract
     {
         $indicator = $detalleEscuela->indicador;
 
-        return $this->item($indicator, new IndicadorTransformer);
+        return is_null($indicator) ? $indicator : $this->item($indicator, new IndicadorTransformer);
     }
 
     /**
@@ -110,7 +107,7 @@ class DetalleEscuelaTransformer extends TransformerAbstract
     public function includeStatistic(DetalleEscuela $detalleEscuela)
     {
         $statistic = $detalleEscuela->estadistica;
-        return $this->item($statistic, new EstadisticaTransformer);
+        return is_null($statistic) ? $statistic : $this->item($statistic, new EstadisticaTransformer);
     }
 
 }
