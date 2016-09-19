@@ -11,8 +11,6 @@
 |
 */
 
-use Psr\Http\Message\ServerRequestInterface;
-
 Route::get('/', 'HomeController@index');
 
 
@@ -172,65 +170,9 @@ Route::group(['prefix' => 'api'], function() {
          */
         Route::group(['prefix' => 'cct'], function() {
             
-            Route::get('activos', function(ServerRequestInterface $request) {
-                
-                $queryParams = $request->getQueryParams();                
-                $limit = array_key_exists('limit', $queryParams) ? (is_numeric($queryParams['limit']) ? ($queryParams['limit'] < 1 ? 30 : ((int) $queryParams['limit'])) : 30 ) : 30;
+            Route::get('{filename}', 'CCTController@index');
 
-                $offset = array_key_exists('offset', $queryParams) ? (is_numeric($queryParams['offset']) ? ($queryParams['offset'] < 1 ? 0 : ((int)$queryParams['offset'])) : 0 ) : 0;
-
-                $excel = storage_path('app/xlsx/cct_listado_activos.xlsx');
-                    
-                return Excel::load($excel, function($reader) use (&$limit, &$offset){ 
-                    $reader->limit($limit, $offset);
-                })->get();
-
-            });
-
-            Route::get('estadisticas', function(ServerRequestInterface $request) {
-                
-                $queryParams = $request->getQueryParams();                
-                $limit = array_key_exists('limit', $queryParams) ? (is_numeric($queryParams['limit']) ? ($queryParams['limit'] < 1 ? 30 : ((int) $queryParams['limit'])) : 30 ) : 30;
-
-                $offset = array_key_exists('offset', $queryParams) ? (is_numeric($queryParams['offset']) ? ($queryParams['offset'] < 1 ? 0 : ((int)$queryParams['offset'])) : 0 ) : 0;
-
-                $excel = storage_path('app/xlsx/cct_estadisticas.xlsx');
-                    
-                return Excel::load($excel, function($reader) use (&$limit, &$offset){ 
-                    $reader->limit($limit, $offset);
-                })->get();
-
-            });
-
-            Route::get('indicadores', function(ServerRequestInterface $request) {
-                
-                $queryParams = $request->getQueryParams();                
-                $limit = array_key_exists('limit', $queryParams) ? (is_numeric($queryParams['limit']) ? ($queryParams['limit'] < 1 ? 30 : ((int) $queryParams['limit'])) : 30 ) : 30;
-
-                $offset = array_key_exists('offset', $queryParams) ? (is_numeric($queryParams['offset']) ? ($queryParams['offset'] < 1 ? 0 : ((int)$queryParams['offset'])) : 0 ) : 0;
-
-                $excel = storage_path('app/xlsx/cct_indicadores.xlsx');
-                    
-                return Excel::load($excel, function($reader) use (&$limit, &$offset){ 
-                    $reader->limit($limit, $offset);
-                })->get();
-
-            });
-
-            Route::get('planea', function(ServerRequestInterface $request) {
-                
-                $queryParams = $request->getQueryParams();                
-                $limit = array_key_exists('limit', $queryParams) ? (is_numeric($queryParams['limit']) ? ($queryParams['limit'] < 1 ? 30 : ((int) $queryParams['limit'])) : 30 ) : 30;
-
-                $offset = array_key_exists('offset', $queryParams) ? (is_numeric($queryParams['offset']) ? ($queryParams['offset'] < 1 ? 0 : ((int)$queryParams['offset'])) : 0 ) : 0;
-
-                $excel = storage_path('app/xlsx/cct_planea.xlsx');
-                    
-                return Excel::load($excel, function($reader) use (&$limit, &$offset){ 
-                    $reader->limit($limit, $offset);
-                })->get();
-
-            });
+            Route::get('download/{filename}', 'CCTController@download');
 
         });
 
