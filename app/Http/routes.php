@@ -170,9 +170,9 @@ Route::group(['prefix' => 'api'], function() {
          */
         Route::group(['prefix' => 'cct'], function() {
             
-            Route::get('{filename}', 'CCTController@index');
+            // Route::get('{filename}', 'CCTController@index');
 
-            Route::get('download/{filename}', 'CCTController@download');
+            Route::get('download/{filename}', ['as' => 'api.v0.1.cct.download', 'uses' => 'CCTController@download']);
 
         });
 

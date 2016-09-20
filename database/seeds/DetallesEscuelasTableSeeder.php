@@ -12,7 +12,7 @@ class DetallesEscuelasTableSeeder extends Seeder
     public function run()
     {
 
-    	$excel = storage_path('app/xlsx/cct_listado_activos.xlsx');
+    	$excel = storage_path('app/xlsx/cct_activos.xlsx');
     	
         $niveles = DB::table('niveles_educativos')->select()->get();
         $programas = DB::table('programas_educativos')->select()->get();

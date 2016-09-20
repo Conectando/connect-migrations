@@ -123,23 +123,56 @@
 </tbody>
 </table>
 <h2>Response</h2>
+<blockquote>
+<p>Response de un unico objeto</p>
+</blockquote>
+<pre><code class="language-json">
+    {
+        "data": {
+            "id": 6567,
+            "name": "Cristian Jaramillo"
+            ...
+        }
+    }
+</code></pre>
+<blockquote>
+<p>Response de una collección de objetos</p>
+</blockquote>
+<pre><code class="language-json">
+    {
+        "data": [
+            {
+                "id": 6567,
+                "name": "Cristian Jaramillo"
+                ...
+            },
+            {
+                "id": 6787,
+                "name": "Mitztli Melgoza"
+                ...
+            }
+        ]
+    }
+</code></pre>
 <h2>Meta</h2>
 <blockquote>
 <p>Ejemplo de meta</p>
 </blockquote>
 <pre><code class="language-json">
-    "meta": {
-        "pagination": {
-            "total": 12324,
-            "count": 30,
-            "per_page": 30,
-            "current_page": 1,
-            "total_pages": 411,
-            "links": {
-                "next": "http://104.131.140.61/api/v0.1/schools?page=2"
+    {
+        "meta": {
+            "pagination": {
+                "total": 12324,
+                "count": 30,
+                "per_page": 30,
+                "current_page": 1,
+                "total_pages": 411,
+                "links": {
+                    "next": "/api/v0.1/schools?page=2"
+                }
             }
         }
-    }
+    }   
 </code></pre>
 <table>
 <thead>
@@ -191,11 +224,18 @@
 </code></pre>
 <h2>Rate Limit</h2>
 <blockquote>
-<p>Ejemplo Curl</p>
+<p>Ejemplo de RateLimit Headers</p>
 </blockquote>
-<pre><code class="language-curl">
+<pre><code>
     X-RateLimit-Limit: 60
     X-RateLimit-Remaining: 58
+    X-RateLimit-Reset: 678672
+</code></pre>
+<blockquote>
+<p>Ejemplo de respuesta al superar RateLimit</p>
+</blockquote>
+<pre><code>
+    Too Many Requests
 </code></pre>
 <h2>Ejemplo Curl</h2>
 <pre><code class="language-cURL">

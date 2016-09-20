@@ -25,7 +25,11 @@ class CCTController extends Controller
 		'planea',
 	];
 
-
+    protected $availableExtensions = [
+        'csv',
+        'json',
+        'xlsx'
+    ];
 
 	/**
 	 * 
@@ -57,7 +61,8 @@ class CCTController extends Controller
      */
     public function download($filename)
     {
-    	$path = $this->isValidFileName($filename);
+        $type = $this->getExtensionType();
+    	$path = $this->isValidFileName($filename, $type);
 
     	return \Response::download($path);
     }
@@ -65,12 +70,18 @@ class CCTController extends Controller
     /**
      * 
      */
-    private function isValidFileName($filename)
+    private function isValidFileName($filename, $type)
     {
-    	if(!in_array($filename, $this->availableFileNames))
+    	if(!in_array($filename, $this->availableFileNames) || !in_array($type, $this->availableExtensions))
 			abort(404);
 		else
-			return storage_path('app/xlsx/cct_listado_' . $filename . '.xlsx');
+			return storage_path('app/' . $type . '/cct_' . $filename . '.' . $type);
+    }
+
+    private function getExtensionType()
+    {
+        $queryParams = $this->request->getQueryParams();
+        return array_key_exists('type', $queryParams) ? $queryParams['type'] : 'json';
     }
 
     /**
