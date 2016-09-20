@@ -542,9 +542,11 @@ body,
 }
 .hljs-keyword,
 .hljs-selector-tag,
-.hljs-name,
-.hljs-attr {
+.hljs-name {
   color: #bb80b3;
+}
+.hljs-attr {
+  color: #82aaff;
 }
 .hljs-symbol,
 .hljs-attribute {

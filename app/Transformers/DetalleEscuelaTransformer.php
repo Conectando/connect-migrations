@@ -41,7 +41,7 @@ class DetalleEscuelaTransformer extends TransformerAbstract
     {
         $transform = [
             'id'         => (int) $model->id,
-            'key'        => $model->clave_ct,
+            'cct'        => $model->clave_ct,
             'turn'       => $model->turno,
             'email'      => $model->correo,
             'telephone'  => $model->telefono,
