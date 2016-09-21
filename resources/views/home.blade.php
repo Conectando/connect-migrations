@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Mi Escuela - API</title>
 
+    <meta property="og:title" content="MI ESCUELA - API" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://104.131.140.61" />
+    <meta property="og:image" content="http://104.131.140.61/images/facebook-image.jpg" />
+    <meta property="og:description" content="La autonomía de gestión y la profesionalización de los docentes, son dos de las mas importantes características de la actual reforma educativa" />
+
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/all.js"></script>
 

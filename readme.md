@@ -1,8 +1,5 @@
 #  Connectando Mi Escuela Migraciones
 
-[![License](https://poser.pugx.org/conectando-my-school/migrations/license.svg)](http://104.131.140.61)
-
-
 ## Requerimientos
 
 > Instalar
